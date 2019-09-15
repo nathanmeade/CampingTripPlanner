@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Camping Trip Planner</string>
+    <string name="create_trip">Create Trip</string>
+    <string name="select_trip">Select Trip</string>
+    <string name="name">Name:</string>
+    <string name="location">Location:</string>
+    <string name="arrival_date">Arrival Date:</string>
+    <string name="departure_date">Departure Date:</string>
+    <string name="camping_gear">Camping Gear:</string>
+    <string name="not_selected">(Not Selected)</string>
+    <string name="none">(None)</string>
 </resources>
