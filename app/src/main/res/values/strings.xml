@@ -9,4 +9,10 @@
     <string name="camping_gear">Camping Gear:</string>
     <string name="not_selected">(Not Selected)</string>
     <string name="none">(None)</string>
+    <string name="tent">Tent:</string>
+    <string name="sleeping_bag">Sleeping Bag:</string>
+    <string name="food">Food:</string>
+    <string name="eggs">Eggs:</string>
+    <string name="bacon">Bacon:</string>
+    <string name="save">SAVE</string>
 </resources>
