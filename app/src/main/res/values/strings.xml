@@ -28,4 +28,7 @@
     <string name="weather_placeholder">Currently: 68°F</string>
     <string name="create_trip_method_name">createTrip</string>
     <string name="select_trip_method_name">selectTrip</string>
+    <string name="select">SELECT</string>
+    <string name="cancel">CANCEL</string>
+    <string name="mapInstruction">Long press a location on the map to place a marker:</string>
 </resources>
