@@ -20,8 +20,14 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void viewTrip(View view) {
-        Intent intent = new Intent(this, ViewTripActivity.class);
+    public void selectTrip(View view) {
+        Intent intent = new Intent(this, SelectTripActivity.class);
         startActivity(intent);
     }
+
+/*    public void viewTrip(View view) {
+        Intent intent = new Intent(this, ViewTripActivity.class);
+        startActivity(intent);
+    }*/
+
 }

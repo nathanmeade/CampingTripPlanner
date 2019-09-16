@@ -19,11 +19,13 @@
     <string name="edit">EDIT</string>
     <string name="delete">DELETE</string>
     <string name="name_placeholder">Mount Mitchell</string>
-    <string name="location_placeholder">-39, 81</string>
-    <string name="date_placeholder">8/16/19 - 8/20/19</string>
+    <string name="location_placeholder">35, 82</string>
+    <string name="date_placeholder">12/16/19 - 12/20/19</string>
     <string name="tent_placeholder">1x Tent</string>
     <string name="sleeping_bag_placeholder">1x Sleeping Bag</string>
     <string name="eggs_placeholder">1x Eggs</string>
     <string name="bacon_placeholder">1x Bacon</string>
-    <string name="weather_placeholder">Currently: 72°F</string>
+    <string name="weather_placeholder">Currently: 68°F</string>
+    <string name="create_trip_method_name">createTrip</string>
+    <string name="select_trip_method_name">selectTrip</string>
 </resources>
