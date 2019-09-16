@@ -2,6 +2,7 @@
     <string name="app_name">Camping Trip Planner</string>
     <string name="create_trip">Create Trip</string>
     <string name="select_trip">Select Trip</string>
+    <string name="view_trip">View Trip</string>
     <string name="name">Name:</string>
     <string name="location">Location:</string>
     <string name="arrival_date">Arrival Date:</string>
@@ -15,4 +16,14 @@
     <string name="eggs">Eggs:</string>
     <string name="bacon">Bacon:</string>
     <string name="save">SAVE</string>
+    <string name="edit">EDIT</string>
+    <string name="delete">DELETE</string>
+    <string name="name_placeholder">Mount Mitchell</string>
+    <string name="location_placeholder">-39, 81</string>
+    <string name="date_placeholder">8/16/19 - 8/20/19</string>
+    <string name="tent_placeholder">1x Tent</string>
+    <string name="sleeping_bag_placeholder">1x Sleeping Bag</string>
+    <string name="eggs_placeholder">1x Eggs</string>
+    <string name="bacon_placeholder">1x Bacon</string>
+    <string name="weather_placeholder">Currently: 72°F</string>
 </resources>
