@@ -1,5 +1,6 @@
 package com.example.campingtripplanner;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -92,7 +93,7 @@ public class CreateTripActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), MapActivity.class);
                 getCurrentTripValues();
-                createBundle();
+                createBundle(sendingBundle);
                 intent.putExtras(sendingBundle);
                 startActivity(intent);
             }
@@ -101,7 +102,7 @@ public class CreateTripActivity extends AppCompatActivity {
         receivedBundle = receivedIntent.getExtras();
         initializeCounts();
         if (receivedBundle != null){
-            getReceivedBundleValues();
+            getBundleValues(receivedBundle);
             setViewsFromBundleValues();
             setCountsFromBundle();
         }
@@ -115,12 +116,12 @@ public class CreateTripActivity extends AppCompatActivity {
                 int day = calendar.get(Calendar.DAY_OF_MONTH);
 
                 DatePickerDialog datePickerDialog = new DatePickerDialog(
-                        context,
-                        AlertDialog.THEME_DEVICE_DEFAULT_DARK,
-                        arrivalDateSetListener,
-                        year,
-                        month,
-                        day);
+                    context,
+                    AlertDialog.THEME_DEVICE_DEFAULT_DARK,
+                    arrivalDateSetListener,
+                    year,
+                    month,
+                    day);
                 datePickerDialog.show();
             }
         });
@@ -216,6 +217,19 @@ public class CreateTripActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        getBundleValues(savedInstanceState);
+        setViewsFromBundleValues();
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        getCurrentTripValues();
+        createBundle(outState);
+        super.onSaveInstanceState(outState);
+    }
+
     public void initializeViews(){
         nameEditText = findViewById(R.id.nameEditText);
         locationTextView = findViewById(R.id.locationValueTextView);
@@ -249,26 +263,26 @@ public class CreateTripActivity extends AppCompatActivity {
         bacon = baconTextView.getText().toString();
     }
 
-    public void createBundle(){
-        sendingBundle.putString("name", name);
-        sendingBundle.putString("location", location);
-        sendingBundle.putString("arrival", arrival);
-        sendingBundle.putString("departure", departure);
-        sendingBundle.putString("tent", tent);
-        sendingBundle.putString("bag", bag);
-        sendingBundle.putString("eggs", eggs);
-        sendingBundle.putString("bacon", bacon);
+    public void createBundle(Bundle bundle){
+        bundle.putString("name", name);
+        bundle.putString("location", location);
+        bundle.putString("arrival", arrival);
+        bundle.putString("departure", departure);
+        bundle.putString("tent", tent);
+        bundle.putString("bag", bag);
+        bundle.putString("eggs", eggs);
+        bundle.putString("bacon", bacon);
     }
 
-    public void getReceivedBundleValues(){
-        name = receivedBundle.getString("name");
-        location = receivedBundle.getString("location");
-        arrival = receivedBundle.getString("arrival");
-        departure = receivedBundle.getString("departure");
-        tent = receivedBundle.getString("tent");
-        bag = receivedBundle.getString("bag");
-        eggs = receivedBundle.getString("eggs");
-        bacon = receivedBundle.getString("bacon");
+    public void getBundleValues(Bundle bundle){
+        name = bundle.getString("name");
+        location = bundle.getString("location");
+        arrival = bundle.getString("arrival");
+        departure = bundle.getString("departure");
+        tent = bundle.getString("tent");
+        bag = bundle.getString("bag");
+        eggs = bundle.getString("eggs");
+        bacon = bundle.getString("bacon");
     }
 
     public void setViewsFromBundleValues(){

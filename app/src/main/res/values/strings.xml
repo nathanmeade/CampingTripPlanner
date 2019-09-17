@@ -31,4 +31,15 @@
     <string name="select">SELECT</string>
     <string name="cancel">CANCEL</string>
     <string name="mapInstruction">Long press a location on the map to place a marker:</string>
+    <string name="mapButtonContentDescription">Select location from map</string>
+    <string name="departureButtonContentDescription">Set departure date</string>
+    <string name="arrivalButtonContentDescription">Set arrival date</string>
+    <string name="tentDecrementButtonContentDescription">Decrease tent count</string>
+    <string name="tentIncrementButtonContentDescription">Increase tent count</string>
+    <string name="sleepingBagDecrementButtonContentDescription">Decrease sleeping bag count</string>
+    <string name="sleepingBagIncrementButtonContentDescription">Increase sleeping bag count</string>
+    <string name="eggsDecrementButtonContentDescription">Decrease eggs count</string>
+    <string name="eggsIncrementButtonContentDescription">Increase eggs count</string>
+    <string name="baconDecrementButtonContentDescription">Decrease bacon count</string>
+    <string name="baconIncrementButtonContentDescription">Increase bacon count</string>
 </resources>
