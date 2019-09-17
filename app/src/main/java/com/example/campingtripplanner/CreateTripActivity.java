@@ -5,6 +5,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
+import androidx.room.Room;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
@@ -22,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.Calendar;
+import java.util.Random;
 
 public class CreateTripActivity extends AppCompatActivity {
 
@@ -64,6 +66,10 @@ public class CreateTripActivity extends AppCompatActivity {
     private int bagCount;
     private int eggsCount;
     private int baconCount;
+
+    private AppDatabase db;
+    private int value;
+    private Random rand;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -213,6 +219,32 @@ public class CreateTripActivity extends AppCompatActivity {
                 baconTextView.setText(""+baconCount);
             }
         });
+        rand = new Random();
+        db = Room.databaseBuilder(getApplicationContext(),
+                AppDatabase.class, "database-name").allowMainThreadQueries().build();
+    }
+
+    public void saveTrip(View view) {
+        value = rand.nextInt(500);
+        /*db.tripDao().deleteAll();*/
+        getCurrentTripValues();
+/*
+        Toast.makeText(this, name + location + arrival + departure + tent + sleepingBag + eggs + bacon, Toast.LENGTH_SHORT).show();
+*/
+        Trip trip = new Trip();
+        trip.tid = value;
+        trip.name = name;
+        trip.location = location;
+        trip.arrival = arrival;
+        trip.departure = departure;
+        trip.tent = tent;
+        trip.bag = bag;
+        trip.eggs = eggs;
+        trip.bacon = bacon;
+        db.tripDao().insertAll(trip);
+        Intent intent = new Intent(this, ViewTripActivity.class);
+        intent.putExtra("tid", value);
+        startActivity(intent);
     }
 
     @Override
