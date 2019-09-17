@@ -22,156 +22,6 @@
             android:layout_height="wrap_content"
             android:background="@color/colorPrimaryDark">
 
-            <Button
-                android:id="@+id/saveButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:layout_marginBottom="32dp"
-                android:background="@color/colorAccent"
-                android:text="@string/save"
-                android:textColor="@color/colorPrimaryDark"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/baconTextView"
-                app:layout_constraintBottom_toBottomOf="parent"/>
-
-            <EditText
-                android:id="@+id/nameEditText"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:backgroundTint="@color/colorAccent"
-                android:textColor="@color/colorAccent"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="@+id/nameTextView"
-                app:layout_constraintStart_toEndOf="@+id/nameTextView"
-                app:layout_constraintTop_toTopOf="@+id/nameTextView" />
-
-            <ImageView
-                android:id="@+id/mapButton"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:background="@color/colorAccent"
-                android:src="@drawable/ic_gps_not_fixed_primary_dark_40dp"
-                app:layout_constraintBottom_toBottomOf="@+id/locationTextView"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/locationTextView" />
-
-            <ImageView
-                android:id="@+id/arrivalDateButton"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:background="@color/colorAccent"
-                android:src="@drawable/ic_date_range_primary_dark_40dp"
-                app:layout_constraintBottom_toBottomOf="@+id/arrivalTextView"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/arrivalTextView" />
-
-            <ImageView
-                android:id="@+id/departureDateButton"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:background="@color/colorAccent"
-                android:src="@drawable/ic_date_range_primary_dark_40dp"
-                app:layout_constraintBottom_toBottomOf="@+id/departureTextView"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/departureTextView" />
-
-            <ImageView
-                android:id="@+id/tentIncrementButton"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:src="@drawable/ic_add_box_black_40dp"
-
-                app:layout_constraintBottom_toBottomOf="@+id/tentTextView"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/tentTextView" />
-
-            <ImageView
-                android:id="@+id/tentDecrementButton"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginRight="8dp"
-                android:src="@drawable/ic_indeterminate_check_box_yellow_40dp"
-                app:layout_constraintBottom_toBottomOf="@+id/tentEditText"
-                app:layout_constraintRight_toLeftOf="@+id/tentEditText"
-                app:layout_constraintTop_toTopOf="@+id/tentEditText" />
-
-            <ImageView
-                android:id="@+id/sleepingBagIncrementButton"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:src="@drawable/ic_add_box_black_40dp"
-
-                app:layout_constraintBottom_toBottomOf="@+id/sleepingBagTextView"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/sleepingBagTextView" />
-
-            <ImageView
-                android:id="@+id/sleepingBagDecrementButton"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginRight="8dp"
-                android:src="@drawable/ic_indeterminate_check_box_yellow_40dp"
-                app:layout_constraintBottom_toBottomOf="@+id/sleepingBagEditText"
-                app:layout_constraintRight_toLeftOf="@+id/sleepingBagEditText"
-                app:layout_constraintTop_toTopOf="@+id/sleepingBagEditText" />
-
-            <ImageView
-                android:id="@+id/eggsIncrementButton"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:src="@drawable/ic_add_box_black_40dp"
-
-                app:layout_constraintBottom_toBottomOf="@+id/eggsTextView"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/eggsTextView" />
-
-            <ImageView
-                android:id="@+id/eggsDecrementButton"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginRight="8dp"
-                android:src="@drawable/ic_indeterminate_check_box_yellow_40dp"
-                app:layout_constraintBottom_toBottomOf="@+id/eggsEditText"
-                app:layout_constraintRight_toLeftOf="@+id/eggsEditText"
-                app:layout_constraintTop_toTopOf="@+id/eggsEditText" />
-
-            <ImageView
-                android:id="@+id/baconIncrementButton"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:src="@drawable/ic_add_box_black_40dp"
-
-                app:layout_constraintBottom_toBottomOf="@+id/baconTextView"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/baconTextView" />
-
-            <ImageView
-                android:id="@+id/baconDecrementButton"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginRight="8dp"
-                android:src="@drawable/ic_indeterminate_check_box_yellow_40dp"
-                app:layout_constraintBottom_toBottomOf="@+id/baconEditText"
-                app:layout_constraintRight_toLeftOf="@+id/baconEditText"
-                app:layout_constraintTop_toTopOf="@+id/baconEditText" />
-
             <TextView
                 android:id="@+id/nameTextView"
                 android:layout_width="wrap_content"
@@ -185,6 +35,18 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>
 
+            <EditText
+                android:id="@+id/nameEditText"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:backgroundTint="@color/colorAccent"
+                android:textColor="@color/colorAccent"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@+id/nameTextView"
+                app:layout_constraintStart_toEndOf="@+id/nameTextView"
+                app:layout_constraintTop_toTopOf="@+id/nameTextView" />
+
             <TextView
                 android:id="@+id/locationTextView"
                 android:layout_width="wrap_content"
@@ -195,6 +57,30 @@
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="@+id/nameTextView"
                 app:layout_constraintTop_toBottomOf="@+id/nameTextView" />
+
+            <TextView
+                android:id="@+id/locationValueTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:text="@string/none"
+                android:textColor="@color/colorAccent"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@+id/locationTextView"
+                app:layout_constraintStart_toEndOf="@+id/locationTextView"
+                app:layout_constraintTop_toTopOf="@+id/locationTextView" />
+
+            <ImageView
+                android:id="@+id/mapButton"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:background="@color/colorAccent"
+                android:src="@drawable/ic_gps_not_fixed_primary_dark_40dp"
+                app:layout_constraintBottom_toBottomOf="@+id/locationTextView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/locationTextView" />
 
             <TextView
                 android:id="@+id/arrivalTextView"
@@ -208,6 +94,30 @@
                 app:layout_constraintTop_toBottomOf="@+id/locationTextView" />
 
             <TextView
+                android:id="@+id/arrivalValueTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:text="@string/none"
+                android:textColor="@color/colorAccent"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@+id/arrivalTextView"
+                app:layout_constraintStart_toEndOf="@+id/arrivalTextView"
+                app:layout_constraintTop_toTopOf="@+id/arrivalTextView" />
+
+            <ImageView
+                android:id="@+id/arrivalDateButton"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:background="@color/colorAccent"
+                android:src="@drawable/ic_date_range_primary_dark_40dp"
+                app:layout_constraintBottom_toBottomOf="@+id/arrivalTextView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/arrivalTextView" />
+
+            <TextView
                 android:id="@+id/departureTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -217,6 +127,30 @@
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="@+id/nameTextView"
                 app:layout_constraintTop_toBottomOf="@+id/arrivalTextView" />
+
+            <TextView
+                android:id="@+id/departureValueTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:text="@string/none"
+                android:textColor="@color/colorAccent"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@+id/departureTextView"
+                app:layout_constraintStart_toEndOf="@+id/departureTextView"
+                app:layout_constraintTop_toTopOf="@+id/departureTextView" />
+
+            <ImageView
+                android:id="@+id/departureDateButton"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:background="@color/colorAccent"
+                android:src="@drawable/ic_date_range_primary_dark_40dp"
+                app:layout_constraintBottom_toBottomOf="@+id/departureTextView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/departureTextView" />
 
             <TextView
                 android:id="@+id/campingGearTextView"
@@ -242,6 +176,40 @@
                 app:layout_constraintStart_toStartOf="@+id/campingGearTextView"
                 app:layout_constraintTop_toBottomOf="@+id/campingGearTextView" />
 
+            <ImageView
+                android:id="@+id/tentIncrementButton"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:src="@drawable/ic_add_box_black_40dp"
+
+                app:layout_constraintBottom_toBottomOf="@+id/tentTextView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tentTextView" />
+
+            <TextView
+                android:id="@+id/tentEditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:text="0"
+                android:textColor="@color/colorAccent"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tentIncrementButton"
+                app:layout_constraintEnd_toStartOf="@+id/tentIncrementButton"
+                app:layout_constraintTop_toTopOf="@+id/tentIncrementButton" />
+
+            <ImageView
+                android:id="@+id/tentDecrementButton"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="8dp"
+                android:src="@drawable/ic_indeterminate_check_box_yellow_40dp"
+                app:layout_constraintBottom_toBottomOf="@+id/tentEditText"
+                app:layout_constraintRight_toLeftOf="@+id/tentEditText"
+                app:layout_constraintTop_toTopOf="@+id/tentEditText" />
+
             <TextView
                 android:id="@+id/sleepingBagTextView"
                 android:layout_width="wrap_content"
@@ -252,6 +220,40 @@
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="@+id/tentTextView"
                 app:layout_constraintTop_toBottomOf="@+id/tentTextView" />
+
+            <ImageView
+                android:id="@+id/sleepingBagIncrementButton"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:src="@drawable/ic_add_box_black_40dp"
+
+                app:layout_constraintBottom_toBottomOf="@+id/sleepingBagTextView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/sleepingBagTextView" />
+
+            <TextView
+                android:id="@+id/sleepingBagEditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:text="0"
+                android:textColor="@color/colorAccent"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@+id/sleepingBagIncrementButton"
+                app:layout_constraintEnd_toStartOf="@+id/sleepingBagIncrementButton"
+                app:layout_constraintTop_toTopOf="@+id/sleepingBagIncrementButton" />
+
+            <ImageView
+                android:id="@+id/sleepingBagDecrementButton"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="8dp"
+                android:src="@drawable/ic_indeterminate_check_box_yellow_40dp"
+                app:layout_constraintBottom_toBottomOf="@+id/sleepingBagEditText"
+                app:layout_constraintRight_toLeftOf="@+id/sleepingBagEditText"
+                app:layout_constraintTop_toTopOf="@+id/sleepingBagEditText" />
 
             <TextView
                 android:id="@+id/foodTextView"
@@ -277,40 +279,17 @@
                 app:layout_constraintStart_toStartOf="@+id/foodTextView"
                 app:layout_constraintTop_toBottomOf="@+id/foodTextView" />
 
-            <TextView
-                android:id="@+id/baconTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="@string/bacon"
-                android:textColor="@color/colorAccent"
-                android:textSize="20sp"
-                app:layout_constraintStart_toStartOf="@+id/eggsTextView"
-                app:layout_constraintTop_toBottomOf="@+id/eggsTextView" />
+            <ImageView
+                android:id="@+id/eggsIncrementButton"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:src="@drawable/ic_add_box_black_40dp"
 
-            <TextView
-                android:id="@+id/tentEditText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="8dp"
-                android:text="0"
-                android:textColor="@color/colorAccent"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="@+id/tentIncrementButton"
-                app:layout_constraintEnd_toStartOf="@+id/tentIncrementButton"
-                app:layout_constraintTop_toTopOf="@+id/tentIncrementButton" />
-
-            <TextView
-                android:id="@+id/sleepingBagEditText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="8dp"
-                android:text="0"
-                android:textColor="@color/colorAccent"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="@+id/sleepingBagIncrementButton"
-                app:layout_constraintEnd_toStartOf="@+id/sleepingBagIncrementButton"
-                app:layout_constraintTop_toTopOf="@+id/sleepingBagIncrementButton" />
+                app:layout_constraintBottom_toBottomOf="@+id/eggsTextView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/eggsTextView" />
 
             <TextView
                 android:id="@+id/eggsEditText"
@@ -324,6 +303,39 @@
                 app:layout_constraintEnd_toStartOf="@+id/eggsIncrementButton"
                 app:layout_constraintTop_toTopOf="@+id/eggsIncrementButton" />
 
+            <ImageView
+                android:id="@+id/eggsDecrementButton"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="8dp"
+                android:src="@drawable/ic_indeterminate_check_box_yellow_40dp"
+                app:layout_constraintBottom_toBottomOf="@+id/eggsEditText"
+                app:layout_constraintRight_toLeftOf="@+id/eggsEditText"
+                app:layout_constraintTop_toTopOf="@+id/eggsEditText" />
+
+            <TextView
+                android:id="@+id/baconTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/bacon"
+                android:textColor="@color/colorAccent"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@+id/eggsTextView"
+                app:layout_constraintTop_toBottomOf="@+id/eggsTextView" />
+
+            <ImageView
+                android:id="@+id/baconIncrementButton"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:src="@drawable/ic_add_box_black_40dp"
+
+                app:layout_constraintBottom_toBottomOf="@+id/baconTextView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/baconTextView" />
+
             <TextView
                 android:id="@+id/baconEditText"
                 android:layout_width="wrap_content"
@@ -336,41 +348,29 @@
                 app:layout_constraintEnd_toStartOf="@+id/baconIncrementButton"
                 app:layout_constraintTop_toTopOf="@+id/baconIncrementButton" />
 
-            <TextView
-                android:id="@+id/locationValueTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:text="@string/none"
-                android:textColor="@color/colorAccent"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="@+id/locationTextView"
-                app:layout_constraintStart_toEndOf="@+id/locationTextView"
-                app:layout_constraintTop_toTopOf="@+id/locationTextView" />
+            <ImageView
+                android:id="@+id/baconDecrementButton"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="8dp"
+                android:src="@drawable/ic_indeterminate_check_box_yellow_40dp"
+                app:layout_constraintBottom_toBottomOf="@+id/baconEditText"
+                app:layout_constraintRight_toLeftOf="@+id/baconEditText"
+                app:layout_constraintTop_toTopOf="@+id/baconEditText" />
 
-            <TextView
-                android:id="@+id/arrivalValueTextView"
+            <Button
+                android:id="@+id/saveButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:text="@string/none"
-                android:textColor="@color/colorAccent"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="@+id/arrivalTextView"
-                app:layout_constraintStart_toEndOf="@+id/arrivalTextView"
-                app:layout_constraintTop_toTopOf="@+id/arrivalTextView" />
-
-            <TextView
-                android:id="@+id/departureValueTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:text="@string/none"
-                android:textColor="@color/colorAccent"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="@+id/departureTextView"
-                app:layout_constraintStart_toEndOf="@+id/departureTextView"
-                app:layout_constraintTop_toTopOf="@+id/departureTextView" />
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="32dp"
+                android:background="@color/colorAccent"
+                android:text="@string/save"
+                android:textColor="@color/colorPrimaryDark"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/baconTextView"
+                app:layout_constraintBottom_toBottomOf="parent"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
