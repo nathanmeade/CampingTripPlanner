@@ -82,8 +82,6 @@ public class CreateTripActivity extends AppCompatActivity {
             }
         });
         initializeViews();
-        location = "1";
-        locationTextView.setText(location);
         //Create Bundle
         sendingBundle = new Bundle();
 
