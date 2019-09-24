@@ -3,14 +3,30 @@ package com.example.campingtripplanner;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.View;
 
-public class SelectTripActivity extends AppCompatActivity {
+import java.util.List;
+
+public class SelectTripActivity extends AppCompatActivity implements TripListAdapter.TripListAdapterOnClickHandler {
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager layoutManager;
+
+    private TripListAdapter.TripListAdapterOnClickHandler recyclerAdapterOnClickHandler;
+
+    private Context context;
+
+    private Trip trip1;
+    private List<Trip> trips;
+    private AppDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,5 +43,46 @@ public class SelectTripActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+
+        recyclerView = findViewById(R.id.recyclerview);
+        // use this setting to improve performance if you know that changes
+        // in content do not change the layout size of the RecyclerView
+        recyclerView.setHasFixedSize(true);
+
+        // use a linear layout manager
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+
+        // specify an adapter (see also next example)
+        /*String[] strings = ["test1", "test2"];*/
+        String[] myDataset = new String[2];
+        myDataset[0] = "test1";
+        myDataset[1] = "test2";
+        db = Room.databaseBuilder(getApplicationContext(),
+                AppDatabase.class, "database-name").allowMainThreadQueries().build();
+        trips = db.tripDao().getAll();
+        String[] myDataset2 = new String[trips.size()];
+        int[] myDataset3 = new int[trips.size()];
+        for (int i=0; i<trips.size(); i++){
+            myDataset2[i] = trips.get(i).name;
+            myDataset3[i] = trips.get(i).tid;
+        }
+        for (int i=0; i<2; i++){
+            myDataset[i] = trips.get(i).name;
+        }
+        /*myDataset[0]=trips.get(0).name;*/
+        recyclerAdapterOnClickHandler = this;
+        mAdapter = new TripListAdapter(myDataset2, myDataset3, recyclerAdapterOnClickHandler);
+        recyclerView.setAdapter(mAdapter);
+        context = this;
+    }
+
+    @Override
+    public void onClick(String name, int tid, int adapterPosition) {
+        Intent intent = new Intent(this, ViewTripActivity.class);
+        intent.putExtra("tid", tid);
+        startActivity(intent);
     }
 }
