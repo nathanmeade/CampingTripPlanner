@@ -64,7 +64,18 @@ public class ViewTripActivity extends AppCompatActivity {
     }
 
     public void editTrip(View view) {
-
+        Bundle bundle = new Bundle();
+        bundle.putString("name", trip.name);
+        bundle.putString("location", trip.location);
+        bundle.putString("arrival", trip.arrival);
+        bundle.putString("departure", trip.departure);
+        bundle.putString("tent", trip.tent);
+        bundle.putString("bag", trip.bag);
+        bundle.putString("eggs", trip.eggs);
+        bundle.putString("bacon", trip.bacon);
+        Intent intent = new Intent(this, CreateTripActivity.class);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 
     public void deleteTrip(View view) {
