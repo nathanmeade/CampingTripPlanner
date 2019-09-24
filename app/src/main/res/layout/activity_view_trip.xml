@@ -141,7 +141,8 @@
                 android:layout_height="wrap_content"
                 android:background="@color/colorAccent"
                 android:text="@string/edit"
-                android:textColor="@color/colorPrimaryDark" />
+                android:textColor="@color/colorPrimaryDark"
+                android:onClick="editTrip"/>
 
             <Button
                 android:id="@+id/deleteButton"
@@ -150,7 +151,8 @@
                 android:layout_marginLeft="32dp"
                 android:background="@color/colorAccent"
                 android:text="@string/delete"
-                android:textColor="@color/colorPrimaryDark" />
+                android:textColor="@color/colorPrimaryDark"
+                android:onClick="deleteTrip"/>
             </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

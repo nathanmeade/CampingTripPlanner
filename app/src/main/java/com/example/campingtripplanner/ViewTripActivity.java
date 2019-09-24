@@ -60,5 +60,16 @@ public class ViewTripActivity extends AppCompatActivity {
                 startActivity(mapIntent);
             }
         });
+
+    }
+
+    public void editTrip(View view) {
+
+    }
+
+    public void deleteTrip(View view) {
+        db.tripDao().deleteByTid(trip.tid);
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }
