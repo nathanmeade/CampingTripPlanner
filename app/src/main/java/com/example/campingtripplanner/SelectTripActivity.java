@@ -44,37 +44,23 @@ public class SelectTripActivity extends AppCompatActivity implements TripListAda
             }
         });
 
-
-
         recyclerView = findViewById(R.id.recyclerview);
-        // use this setting to improve performance if you know that changes
-        // in content do not change the layout size of the RecyclerView
         recyclerView.setHasFixedSize(true);
-
-        // use a linear layout manager
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-
-        // specify an adapter (see also next example)
-        /*String[] strings = ["test1", "test2"];*/
-        String[] myDataset = new String[2];
-        myDataset[0] = "test1";
-        myDataset[1] = "test2";
         db = Room.databaseBuilder(getApplicationContext(),
                 AppDatabase.class, "database-name").allowMainThreadQueries().build();
         trips = db.tripDao().getAll();
         String[] myDataset2 = new String[trips.size()];
         int[] myDataset3 = new int[trips.size()];
+        String[] myDataset4 = new String[trips.size()];
         for (int i=0; i<trips.size(); i++){
             myDataset2[i] = trips.get(i).name;
             myDataset3[i] = trips.get(i).tid;
+            myDataset4[i] = trips.get(i).arrival + " - " + trips.get(i).departure;
         }
-        for (int i=0; i<2; i++){
-            myDataset[i] = trips.get(i).name;
-        }
-        /*myDataset[0]=trips.get(0).name;*/
         recyclerAdapterOnClickHandler = this;
-        mAdapter = new TripListAdapter(myDataset2, myDataset3, recyclerAdapterOnClickHandler);
+        mAdapter = new TripListAdapter(myDataset2, myDataset3, myDataset4, recyclerAdapterOnClickHandler);
         recyclerView.setAdapter(mAdapter);
         context = this;
     }

@@ -42,4 +42,5 @@
     <string name="eggsIncrementButtonContentDescription">Increase eggs count</string>
     <string name="baconDecrementButtonContentDescription">Decrease bacon count</string>
     <string name="baconIncrementButtonContentDescription">Increase bacon count</string>
+    <string name="googleMapsButtonContentDescription">See location in google maps app</string>
 </resources>

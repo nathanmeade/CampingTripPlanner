@@ -226,11 +226,7 @@ public class CreateTripActivity extends AppCompatActivity {
 
     public void saveTrip(View view) {
         value = rand.nextInt(500);
-        /*db.tripDao().deleteAll();*/
         getCurrentTripValues();
-/*
-        Toast.makeText(this, name + location + arrival + departure + tent + sleepingBag + eggs + bacon, Toast.LENGTH_SHORT).show();
-*/
         Trip trip = new Trip();
         trip.tid = value;
         trip.name = name;

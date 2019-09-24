@@ -29,6 +29,13 @@ public class ViewTripActivity extends AppCompatActivity {
         toolbar.getNavigationIcon().setColorFilter(ContextCompat.getColor(this, R.color.colorAccent), PorterDuff.Mode.SRC_IN);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), SelectTripActivity.class);
+                startActivity(intent);
+            }
+        });
         Intent intent = getIntent();
         int tid = intent.getIntExtra("tid", 0);
         db = Room.databaseBuilder(getApplicationContext(),
@@ -80,7 +87,7 @@ public class ViewTripActivity extends AppCompatActivity {
 
     public void deleteTrip(View view) {
         db.tripDao().deleteByTid(trip.tid);
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, SelectTripActivity.class);
         startActivity(intent);
     }
 }

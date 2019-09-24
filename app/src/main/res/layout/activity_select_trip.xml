@@ -12,10 +12,15 @@ android:background="@color/colorPrimaryDark">
         app:navigationIcon="?attr/homeAsUpIndicator"
         app:titleTextColor="@color/colorAccent"
         android:background="@color/colorPrimaryDark"/>
-
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorAccent" />
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/recyclerview"></androidx.recyclerview.widget.RecyclerView>
+
+
 
 </LinearLayout>

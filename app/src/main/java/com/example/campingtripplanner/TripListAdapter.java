@@ -12,11 +12,13 @@ public class TripListAdapter extends RecyclerView.Adapter<TripListAdapter.MyView
     private String[] mDataset;
     private int[] tids;
     private final TripListAdapterOnClickHandler mClickHandler;
+    private String[] mDataset4;
 
-    public TripListAdapter(String[] mDataset, int[] tids, TripListAdapterOnClickHandler mClickHandler) {
+    public TripListAdapter(String[] mDataset, int[] tids, String[] myDataset4, TripListAdapterOnClickHandler mClickHandler) {
         this.mDataset = mDataset;
         this.tids = tids;
         this.mClickHandler = mClickHandler;
+        this.mDataset4 = myDataset4;
     }
 
     @NonNull
@@ -31,6 +33,8 @@ public class TripListAdapter extends RecyclerView.Adapter<TripListAdapter.MyView
     public void onBindViewHolder(@NonNull TripListAdapter.MyViewHolder holder, int position) {
         TextView textView = holder.textView.findViewById(R.id.my_text_view);
         textView.setText(mDataset[position]);
+        TextView textView1 = holder.textView.findViewById(R.id.datesTextView);
+        textView1.setText(mDataset4[position]);
     }
 
     @Override
