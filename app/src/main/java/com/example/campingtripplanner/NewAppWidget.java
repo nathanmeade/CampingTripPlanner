@@ -94,10 +94,10 @@ public class NewAppWidget extends AppWidgetProvider {
             return "No Trips Saved";
         }
         else if (!approachingTrip){
-            return "No approaching trips "+ (diffInMillies / (1000*60*60*24));
+            return "It has been "+ (diffInMillies / (1000*60*60*24)) + " day(s) since your last camping trip!";
         }
         else {
-            return "Approaching trip " + (diffInMillies2 / (1000*60*60*24));
+            return "There are " + (diffInMillies2 / (1000*60*60*24)) + " day(s) left until your next camping trip!";
         }
     }
 
