@@ -14,12 +14,16 @@ android {
         debug {
             buildConfigField("String", "googlemapskey", google_maps_key)
             resValue("string", "google_maps_key", google_maps_key)
+            buildConfigField("String", "openweatherkey", openweather_key)
+            resValue("string", "openweather_key", openweather_key)
         }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             buildConfigField("String", "googlemapskey", google_maps_key)
             resValue("string", "google_maps_key", google_maps_key)
+            buildConfigField("String", "openweatherkey", openweather_key)
+            resValue("string", "openweather_key", openweather_key)
         }
     }
 }
@@ -36,4 +40,6 @@ dependencies {
     def room_version = "2.2.0-alpha02"
     implementation "androidx.room:room-runtime:$room_version"
     annotationProcessor "androidx.room:room-compiler:$room_version"
+    implementation 'com.squareup.retrofit2:retrofit:2.6.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.6.0'
 }
