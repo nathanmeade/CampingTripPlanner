@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void selectTrip(View view) {
-        Intent intent = new Intent(this, SelectTripActivity.class);
+        Intent intent = new Intent(this, DateConversionTestActivity.class);
         startActivity(intent);
     }
 
