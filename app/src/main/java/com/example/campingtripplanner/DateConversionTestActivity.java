@@ -45,7 +45,7 @@ public class DateConversionTestActivity extends AppCompatActivity {
             if (d.after(date)){
                 Log.d("nathanTest", "after " + trip.arrival + " " + d.compareTo(date));
                 tripsSaved = true;
-                /*approachingTrip = true;*/
+                approachingTrip = true;
                 if (diffInMillies2 == 0){
                     diffInMillies2 = Math.abs(d.getTime() - date.getTime());
                 }

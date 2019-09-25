@@ -28,56 +28,16 @@ public class NewAppWidget extends AppWidgetProvider {
 
     static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
                                 int appWidgetId, List<Trip> list) {
-
-
         CharSequence widgetText = context.getString(R.string.appwidget_text);
         widgetText = NewAppWidget.widgetTextCreator(list);
-        // Construct the RemoteViews object
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.new_app_widget);
         views.setTextViewText(R.id.appwidget_text, widgetText);
-
-        // Instruct the widget manager to update the widget
         appWidgetManager.updateAppWidget(appWidgetId, views);
-
     }
-
-
 
     @Override
     public void onUpdate(final Context context, final AppWidgetManager appWidgetManager, final int[] appWidgetIds) {
-        // There may be multiple widgets active, so update all of them
-/*        for (int appWidgetId : appWidgetIds) {
-            updateAppWidget(context, appWidgetManager, appWidgetId);
-        }*/
-        new AsyncTask<Context, Void, List<Trip>>(){
-            @Override
-            protected List<Trip> doInBackground(Context... context) {
-
-                List<Trip> list=null;
-                AppDatabase db = Room.databaseBuilder(context[0],
-                        AppDatabase.class, "database-name").allowMainThreadQueries().build();
-                list = db.tripDao().getAll();
-
-
-                return list;
-            }
-
-            @Override
-            protected void onPostExecute(List<Trip> list) {
-                super.onPostExecute(list);
-
-                if(list != null){
-
-                    final Random random=new Random();
-                    for (int appWidgetId : appWidgetIds) {
-                        updateAppWidget(context, appWidgetManager, appWidgetId, list);
-                    }
-
-                }
-
-            }
-
-        }.execute(context);
+        new GetTripsTask(appWidgetManager, appWidgetIds, context).execute(context);
     }
 
     @Override
@@ -101,11 +61,7 @@ public class NewAppWidget extends AppWidgetProvider {
         tripsSaved = false;
         Date date = Calendar.getInstance().getTime();
         Date d = new Date();
-/*        db = Room.databaseBuilder(this,
-                AppDatabase.class, "database-name").allowMainThreadQueries().build();
-        List<Trip> trips = db.tripDao().getAll();*/
         for (Trip trip : trips){
-            /*trip.arrival*/
             SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
             try {
                 d = sdf.parse(trip.arrival);
@@ -115,7 +71,7 @@ public class NewAppWidget extends AppWidgetProvider {
             if (d.after(date)){
                 Log.d("nathanTest", "after " + trip.arrival + " " + d.compareTo(date));
                 tripsSaved = true;
-                /*approachingTrip = true;*/
+                approachingTrip = true;
                 if (diffInMillies2 == 0){
                     diffInMillies2 = Math.abs(d.getTime() - date.getTime());
                 }
@@ -135,21 +91,43 @@ public class NewAppWidget extends AppWidgetProvider {
             }
         }
         if (!tripsSaved){
-            //no trips saved displayed
-            /*Log.d("nathanTest", "no trips saved");*/
             return "No Trips Saved";
         }
         else if (!approachingTrip){
-            //"it's been " (positive difference in days between closest camping trip) " days since your last camping trip!
-            //^shouldn't this actually be for departure?
-            /*Log.d("nathanTest", "no approaching trips" + (diffInMillies / (1000*60*60*24)));*/
             return "No approaching trips "+ (diffInMillies / (1000*60*60*24));
         }
         else {
-            //"You have " (days until closest camping trip) " until your next camping trip!
-            /*Log.d("nathanTest", "approaching trip" + diffInMillies2);*/
-            /*Log.d("nathanTest", "approaching trip" + (diffInMillies2 / (1000*60*60*24)));*/
             return "Approaching trip " + (diffInMillies2 / (1000*60*60*24));
+        }
+    }
+
+    public class GetTripsTask extends AsyncTask<Context, Void, List<Trip>>{
+        AppWidgetManager appWidgetManager;
+        int[] appWidgetIds;
+        Context context;
+        GetTripsTask(AppWidgetManager appWidgetManager, int[] appWidgetIds, Context context){
+            this.appWidgetManager = appWidgetManager;
+            this.appWidgetIds = appWidgetIds;
+            this.context = context;
+        }
+        @Override
+        protected List<Trip> doInBackground(Context... context) {
+            List<Trip> list=null;
+            AppDatabase db = Room.databaseBuilder(context[0],
+                    AppDatabase.class, "database-name").allowMainThreadQueries().build();
+            list = db.tripDao().getAll();
+            return list;
+        }
+
+        @Override
+        protected void onPostExecute(List<Trip> list) {
+            super.onPostExecute(list);
+            if(list != null){
+                final Random random=new Random();
+                for (int appWidgetId : appWidgetIds) {
+                    updateAppWidget(context, appWidgetManager, appWidgetId, list);
+                }
+            }
         }
     }
 
