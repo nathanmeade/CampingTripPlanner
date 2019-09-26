@@ -43,9 +43,9 @@ public class ViewTripActivity extends AppCompatActivity {
             }
         });
         Intent intent = getIntent();
-        int tid = intent.getIntExtra("tid", 0);
+        int tid = intent.getIntExtra(getString(R.string.tid), 0);
         db = Room.databaseBuilder(getApplicationContext(),
-                AppDatabase.class, "database-name").allowMainThreadQueries().build();
+                AppDatabase.class, getString(R.string.database_name)).allowMainThreadQueries().build();
         trip = db.tripDao().findByTid(tid);
         TextView nameTextView = findViewById(R.id.nameTextView);
         TextView locationTextView = findViewById(R.id.locationTextView);
@@ -58,10 +58,10 @@ public class ViewTripActivity extends AppCompatActivity {
         nameTextView.setText(trip.name);
         locationTextView.setText(trip.location);
         dateRangeTextView.setText(trip.arrival + " - " + trip.departure);
-        tentTextView.setText(trip.tent + "x Tent");
-        bagTextView.setText(trip.bag + "x Sleeping Bag");
-        eggsTextView.setText(trip.eggs + "x Eggs");
-        baconTextView.setText(trip.bacon + "x Bacon");
+        tentTextView.setText(trip.tent + getString(R.string.tent_quantity));
+        bagTextView.setText(trip.bag + getString(R.string.bag_quantity));
+        eggsTextView.setText(trip.eggs + getString(R.string.eggs_quantity));
+        baconTextView.setText(trip.bacon + getString(R.string.bacon_quantity));
 
         ImageView viewLocationButton = findViewById(R.id.viewLocationButton);
         viewLocationButton.setOnClickListener(new View.OnClickListener() {
@@ -69,18 +69,16 @@ public class ViewTripActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Uri gmmIntentUri = Uri.parse("geo:" + trip.location);
                 Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-                mapIntent.setPackage("com.google.android.apps.maps");
+                mapIntent.setPackage(getString(R.string.google_maps_package));
                 startActivity(mapIntent);
             }
         });
         String location = trip.location;
         String coordinates[] = location.split(",");
-        String lat = "34.0767";
-        String lon = "-82.8547";
         final TextView weatherTextView = findViewById(R.id.weatherTextView);
         String appid = BuildConfig.openweatherkey;
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://api.openweathermap.org/")
+                .baseUrl(getString(R.string.open_weather_map_base_url))
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         JsonPlaceHolderApi jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
@@ -95,7 +93,8 @@ public class ViewTripActivity extends AppCompatActivity {
                 Main main = weather.getMain();
                 double temp = main.getTemp();
                 temp = (((temp - 273) * 9/5) + 32);
-                weatherTextView.setText(Double.toString(temp));
+                String formattedTemp = String.format("%.0f", temp);
+                weatherTextView.setText(getString(R.string.currently) + formattedTemp + getString(R.string.degrees_fahrenheit));
             }
 
             @Override
@@ -108,14 +107,14 @@ public class ViewTripActivity extends AppCompatActivity {
 
     public void editTrip(View view) {
         Bundle bundle = new Bundle();
-        bundle.putString("name", trip.name);
-        bundle.putString("location", trip.location);
-        bundle.putString("arrival", trip.arrival);
-        bundle.putString("departure", trip.departure);
-        bundle.putString("tent", trip.tent);
-        bundle.putString("bag", trip.bag);
-        bundle.putString("eggs", trip.eggs);
-        bundle.putString("bacon", trip.bacon);
+        bundle.putString(getString(R.string.name_lowercase), trip.name);
+        bundle.putString(getString(R.string.location_lowercase), trip.location);
+        bundle.putString(getString(R.string.arrival_lowercase), trip.arrival);
+        bundle.putString(getString(R.string.departure_lowercase), trip.departure);
+        bundle.putString(getString(R.string.tent_lowercase), trip.tent);
+        bundle.putString(getString(R.string.bag_lowercase), trip.bag);
+        bundle.putString(getString(R.string.eggs_lowercase), trip.eggs);
+        bundle.putString(getString(R.string.bacon_lowercase), trip.bacon);
         Intent intent = new Intent(this, CreateTripActivity.class);
         intent.putExtras(bundle);
         startActivity(intent);

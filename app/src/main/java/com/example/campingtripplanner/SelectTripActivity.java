@@ -49,7 +49,7 @@ public class SelectTripActivity extends AppCompatActivity implements TripListAda
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         db = Room.databaseBuilder(getApplicationContext(),
-                AppDatabase.class, "database-name").allowMainThreadQueries().build();
+                AppDatabase.class, getString(R.string.database_name)).allowMainThreadQueries().build();
         trips = db.tripDao().getAll();
         String[] myDataset2 = new String[trips.size()];
         int[] myDataset3 = new int[trips.size()];
@@ -68,7 +68,7 @@ public class SelectTripActivity extends AppCompatActivity implements TripListAda
     @Override
     public void onClick(String name, int tid, int adapterPosition) {
         Intent intent = new Intent(this, ViewTripActivity.class);
-        intent.putExtra("tid", tid);
+        intent.putExtra(getString(R.string.tid), tid);
         startActivity(intent);
     }
 }

@@ -9,6 +9,7 @@ import android.widget.RemoteViews;
 
 import androidx.room.Room;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -16,9 +17,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
-/**
- * Implementation of App Widget functionality.
- */
 public class NewAppWidget extends AppWidgetProvider {
 
     private AppDatabase db;
@@ -38,6 +36,7 @@ public class NewAppWidget extends AppWidgetProvider {
     @Override
     public void onUpdate(final Context context, final AppWidgetManager appWidgetManager, final int[] appWidgetIds) {
         new GetTripsTask(appWidgetManager, appWidgetIds, context).execute(context);
+        /*String testString = context.getString(R.string.add_widget);*/
     }
 
     @Override
@@ -61,6 +60,7 @@ public class NewAppWidget extends AppWidgetProvider {
         tripsSaved = false;
         Date date = Calendar.getInstance().getTime();
         Date d = new Date();
+        Date closestDate = new Date();
         for (Trip trip : trips){
             SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
             try {
@@ -74,9 +74,11 @@ public class NewAppWidget extends AppWidgetProvider {
                 approachingTrip = true;
                 if (diffInMillies2 == 0){
                     diffInMillies2 = Math.abs(d.getTime() - date.getTime());
+                    closestDate = d;
                 }
                 else if ((Math.abs(d.getTime() - date.getTime())) < diffInMillies2){
                     diffInMillies2 = Math.abs(d.getTime() - date.getTime());
+                    closestDate = d;
                 }
             }
             else {
@@ -91,13 +93,18 @@ public class NewAppWidget extends AppWidgetProvider {
             }
         }
         if (!tripsSaved){
-            return "No Trips Saved";
+            /*return "No Trips Saved";*/
+            return "No upcoming camping trips";
         }
         else if (!approachingTrip){
-            return "It has been "+ (diffInMillies / (1000*60*60*24)) + " day(s) since your last camping trip!";
+            /*return "It has been "+ (diffInMillies / (1000*60*60*24)) + " day(s) since your last camping trip!";*/
+            return "No upcoming camping trips";
         }
         else {
-            return "There are " + (diffInMillies2 / (1000*60*60*24)) + " day(s) left until your next camping trip!";
+            /*return "There are " + (diffInMillies2 / (1000*60*60*24)) + " day(s) left until your next camping trip!";*/
+            DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+            return "Your next camping trip is on:\n" + dateFormat.format(closestDate);
+            /*return "blah";*/
         }
     }
 

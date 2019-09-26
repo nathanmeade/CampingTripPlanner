@@ -88,10 +88,7 @@ public class CreateTripActivity extends AppCompatActivity {
             }
         });
         initializeViews();
-        //Create Bundle
         sendingBundle = new Bundle();
-
-
         selectMapImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -290,25 +287,25 @@ public class CreateTripActivity extends AppCompatActivity {
     }
 
     public void createBundle(Bundle bundle){
-        bundle.putString("name", name);
-        bundle.putString("location", location);
-        bundle.putString("arrival", arrival);
-        bundle.putString("departure", departure);
-        bundle.putString("tent", tent);
-        bundle.putString("bag", bag);
-        bundle.putString("eggs", eggs);
-        bundle.putString("bacon", bacon);
+        bundle.putString(getString(R.string.name_lowercase), name);
+        bundle.putString(getString(R.string.location_lowercase), location);
+        bundle.putString(getString(R.string.arrival_lowercase), arrival);
+        bundle.putString(getString(R.string.departure_lowercase), departure);
+        bundle.putString(getString(R.string.tent_lowercase), tent);
+        bundle.putString(getString(R.string.bag_lowercase), bag);
+        bundle.putString(getString(R.string.eggs_lowercase), eggs);
+        bundle.putString(getString(R.string.bacon_lowercase), bacon);
     }
 
     public void getBundleValues(Bundle bundle){
-        name = bundle.getString("name");
-        location = bundle.getString("location");
-        arrival = bundle.getString("arrival");
-        departure = bundle.getString("departure");
-        tent = bundle.getString("tent");
-        bag = bundle.getString("bag");
-        eggs = bundle.getString("eggs");
-        bacon = bundle.getString("bacon");
+        name = bundle.getString(getString(R.string.name_lowercase));
+        location = bundle.getString(getString(R.string.location_lowercase));
+        arrival = bundle.getString(getString(R.string.arrival_lowercase));
+        departure = bundle.getString(getString(R.string.departure_lowercase));
+        tent = bundle.getString(getString(R.string.tent_lowercase));
+        bag = bundle.getString(getString(R.string.bag_lowercase));
+        eggs = bundle.getString(getString(R.string.eggs_lowercase));
+        bacon = bundle.getString(getString(R.string.bacon_lowercase));
     }
 
     public void setViewsFromBundleValues(){

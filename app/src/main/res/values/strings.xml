@@ -45,4 +45,24 @@
     <string name="googleMapsButtonContentDescription">See location in google maps app</string>
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
+    <string name="name_lowercase">name</string>
+    <string name="location_lowercase">location</string>
+    <string name="arrival_lowercase">arrival</string>
+    <string name="departure_lowercase">departure</string>
+    <string name="tent_lowercase">tent</string>
+    <string name="bag_lowercase">bag</string>
+    <string name="eggs_lowercase">eggs</string>
+    <string name="bacon_lowercase">bacon</string>
+    <string name="original_marker_title">Marker in Clemson</string>
+    <string name="date_format_pattern">MM/dd/yyyy</string>
+    <string name="database_name">database-name</string>
+    <string name="tid">tid</string>
+    <string name="google_maps_package">com.google.android.apps.maps</string>
+    <string name="open_weather_map_base_url">https://api.openweathermap.org/</string>
+    <string name="currently">Currently:&#160;</string>
+    <string name="degrees_fahrenheit">°F</string>
+    <string name="tent_quantity">x Tent</string>
+    <string name="bag_quantity">x Sleeping Bag</string>
+    <string name="eggs_quantity">x Eggs</string>
+    <string name="bacon_quantity">x Bacon</string>
 </resources>
