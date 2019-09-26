@@ -15,9 +15,9 @@
         tools:text="test1"
         android:textColor="@color/colorAccent"
         android:layout_weight="1"
-        android:layout_gravity="bottom"
         android:gravity="bottom"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:layout_marginStart="32dp" />
 
     <TextView
         android:id="@+id/datesTextView"
@@ -27,7 +27,8 @@
         android:layout_marginLeft="32dp"
         android:textSize="20sp"
         android:textColor="@color/colorAccent"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:layout_marginStart="32dp" />
     <View
         android:layout_width="fill_parent"
         android:layout_height="1dp"
