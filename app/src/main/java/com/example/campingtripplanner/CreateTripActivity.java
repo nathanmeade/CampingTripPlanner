@@ -218,8 +218,6 @@ public class CreateTripActivity extends AppCompatActivity {
             }
         });
         rand = new Random();
-/*        db = Room.databaseBuilder(getApplicationContext(),
-                AppDatabase.class, "database-name").allowMainThreadQueries().build();*/
         db = AppDatabase.getInstance(getApplicationContext());
     }
 

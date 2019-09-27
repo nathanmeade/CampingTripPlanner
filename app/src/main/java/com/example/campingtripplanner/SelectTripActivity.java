@@ -52,8 +52,6 @@ public class SelectTripActivity extends AppCompatActivity implements TripListAda
         recyclerView.setLayoutManager(layoutManager);
         recyclerAdapterOnClickHandler = this;
         context = this;
-/*        db = Room.databaseBuilder(getApplicationContext(),
-                AppDatabase.class, getString(R.string.database_name)).allowMainThreadQueries().build();*/
         db = AppDatabase.getInstance(getApplicationContext());
         SelectTripViewModelFactory selectTripViewModelFactory = new SelectTripViewModelFactory(db);
         SelectTripViewModel selectTripViewModel = ViewModelProviders.of(this, selectTripViewModelFactory).get(SelectTripViewModel.class);
@@ -63,9 +61,6 @@ public class SelectTripActivity extends AppCompatActivity implements TripListAda
                 setRecyclerView(trips);
             }
         });
-        /*trips = db.tripDao().getAll();*/
-
-
     }
 
     public void setRecyclerView(List<Trip> trips){

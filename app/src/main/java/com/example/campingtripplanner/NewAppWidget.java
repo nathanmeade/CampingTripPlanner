@@ -38,7 +38,6 @@ public class NewAppWidget extends AppWidgetProvider {
     @Override
     public void onUpdate(final Context context, final AppWidgetManager appWidgetManager, final int[] appWidgetIds) {
         new GetTripsTask(appWidgetManager, appWidgetIds, context).execute(context);
-        /*String testString = context.getString(R.string.add_widget);*/
     }
 
     @Override
@@ -71,7 +70,6 @@ public class NewAppWidget extends AppWidgetProvider {
                 Log.v("Exception", ex.getLocalizedMessage());
             }
             if (d.after(date)){
-                Log.d("nathanTest", "after " + trip.arrival + " " + d.compareTo(date));
                 tripsSaved = true;
                 approachingTrip = true;
                 if (diffInMillies2 == 0){
@@ -84,7 +82,6 @@ public class NewAppWidget extends AppWidgetProvider {
                 }
             }
             else {
-                Log.d("nathanTest", "before" + trip.arrival);
                 tripsSaved = true;
                 if (diffInMillies == 0){
                     diffInMillies = Math.abs(date.getTime() - d.getTime());
@@ -95,18 +92,14 @@ public class NewAppWidget extends AppWidgetProvider {
             }
         }
         if (!tripsSaved){
-            /*return "No Trips Saved";*/
             return "No upcoming camping trips";
         }
         else if (!approachingTrip){
-            /*return "It has been "+ (diffInMillies / (1000*60*60*24)) + " day(s) since your last camping trip!";*/
             return "No upcoming camping trips";
         }
         else {
-            /*return "There are " + (diffInMillies2 / (1000*60*60*24)) + " day(s) left until your next camping trip!";*/
             DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
             return "Your next camping trip is on:\n" + dateFormat.format(closestDate);
-            /*return "blah";*/
         }
     }
 
@@ -121,14 +114,9 @@ public class NewAppWidget extends AppWidgetProvider {
         }
         @Override
         protected List<Trip> doInBackground(Context... context) {
-            List<Trip> list=null;
-/*            AppDatabase db = Room.databaseBuilder(context[0],
-                    AppDatabase.class, "database-name").allowMainThreadQueries().build();
-            list = db.tripDao().getAll();*/
+            List<Trip> list = null;
             AppDatabase db = AppDatabase.getInstance(context[0]);
             list = db.tripDao().widgetGetAll();
-/*            SelectTripViewModelFactory selectTripViewModelFactory = new SelectTripViewModelFactory(db);
-            SelectTripViewModel selectTripViewModel = ViewModelProviders.of(context[0], selectTripViewModelFactory).get(SelectTripViewModel.class);*/
             return list;
         }
 

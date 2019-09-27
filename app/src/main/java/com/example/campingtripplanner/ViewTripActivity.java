@@ -32,7 +32,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ViewTripActivity extends AppCompatActivity {
 
     private AppDatabase db;
-    /*private LiveData<Trip> trip;*/
     private Trip trip;
 
     TextView nameTextView;
@@ -64,8 +63,6 @@ public class ViewTripActivity extends AppCompatActivity {
         });
         Intent intent = getIntent();
         int tid = intent.getIntExtra(getString(R.string.tid), 0);
-/*        db = Room.databaseBuilder(getApplicationContext(),
-                AppDatabase.class, getString(R.string.database_name)).allowMainThreadQueries().build();*/
         nameTextView = findViewById(R.id.nameTextView);
         locationTextView = findViewById(R.id.locationTextView);
         dateRangeTextView = findViewById(R.id.dateRangeTextView);
@@ -164,7 +161,6 @@ public class ViewTripActivity extends AppCompatActivity {
     }
 
     public void deleteTrip(View view) {
-        //main thread exception:
         final Context context = this;
         AppExecutors.getInstance().diskIO().execute(new Runnable() {
             @Override
