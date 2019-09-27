@@ -70,6 +70,7 @@ public class CreateTripActivity extends AppCompatActivity {
     private AppDatabase db;
     private int value;
     private Random rand;
+    private Context context;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -107,7 +108,7 @@ public class CreateTripActivity extends AppCompatActivity {
             setViewsFromBundleValues();
             setCountsFromBundle();
         }
-        final Context context = this;
+        context = this;
         arrivalImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -217,14 +218,15 @@ public class CreateTripActivity extends AppCompatActivity {
             }
         });
         rand = new Random();
-        db = Room.databaseBuilder(getApplicationContext(),
-                AppDatabase.class, "database-name").allowMainThreadQueries().build();
+/*        db = Room.databaseBuilder(getApplicationContext(),
+                AppDatabase.class, "database-name").allowMainThreadQueries().build();*/
+        db = AppDatabase.getInstance(getApplicationContext());
     }
 
     public void saveTrip(View view) {
         value = rand.nextInt(500);
         getCurrentTripValues();
-        Trip trip = new Trip();
+        final Trip trip = new Trip();
         trip.tid = value;
         trip.name = name;
         trip.location = location;
@@ -234,10 +236,16 @@ public class CreateTripActivity extends AppCompatActivity {
         trip.bag = bag;
         trip.eggs = eggs;
         trip.bacon = bacon;
-        db.tripDao().insertAll(trip);
-        Intent intent = new Intent(this, ViewTripActivity.class);
-        intent.putExtra("tid", value);
-        startActivity(intent);
+        AppExecutors.getInstance().diskIO().execute(new Runnable() {
+            @Override
+            public void run() {
+                db.tripDao().insertAll(trip);
+                Intent intent = new Intent(context, ViewTripActivity.class);
+                intent.putExtra("tid", value);
+                startActivity(intent);
+            }
+        });
+
     }
 
     @Override
