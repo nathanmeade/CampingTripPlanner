@@ -1,5 +1,6 @@
 package com.example.campingtripplanner;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -10,16 +11,19 @@ import java.util.List;
 @Dao
 public interface TripDao {
     @Query("SELECT * FROM trip")
-    List<Trip> getAll();
+    LiveData<List<Trip>> getAll();
+
+    @Query("SELECT * FROM trip")
+    List<Trip> widgetGetAll();
 
     @Query("SELECT * FROM trip WHERE tid IN (:tripIds)")
-    List<Trip> loadAllByIds(int[] tripIds);
+    LiveData<List<Trip>> loadAllByIds(int[] tripIds);
 
     @Query("SELECT * FROM trip WHERE name LIKE :name LIMIT 1")
-    Trip findByName(String name);
+    LiveData<Trip> findByName(String name);
 
     @Query("SELECT * FROM trip WHERE tid=:tid LIMIT 1")
-    Trip findByTid(int tid);
+    LiveData<Trip> findByTid(int tid);
 
     @Insert
     void insertAll(Trip... trips);

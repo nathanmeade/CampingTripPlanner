@@ -7,6 +7,8 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.RemoteViews;
 
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.room.Room;
 
 import java.text.DateFormat;
@@ -120,9 +122,13 @@ public class NewAppWidget extends AppWidgetProvider {
         @Override
         protected List<Trip> doInBackground(Context... context) {
             List<Trip> list=null;
-            AppDatabase db = Room.databaseBuilder(context[0],
+/*            AppDatabase db = Room.databaseBuilder(context[0],
                     AppDatabase.class, "database-name").allowMainThreadQueries().build();
-            list = db.tripDao().getAll();
+            list = db.tripDao().getAll();*/
+            AppDatabase db = AppDatabase.getInstance(context[0]);
+            list = db.tripDao().widgetGetAll();
+/*            SelectTripViewModelFactory selectTripViewModelFactory = new SelectTripViewModelFactory(db);
+            SelectTripViewModel selectTripViewModel = ViewModelProviders.of(context[0], selectTripViewModelFactory).get(SelectTripViewModel.class);*/
             return list;
         }
 

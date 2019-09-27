@@ -3,8 +3,13 @@ package com.example.campingtripplanner;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.room.Room;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.media.Image;
@@ -16,6 +21,8 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.util.concurrent.Executor;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -25,7 +32,20 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ViewTripActivity extends AppCompatActivity {
 
     private AppDatabase db;
+    /*private LiveData<Trip> trip;*/
     private Trip trip;
+
+    TextView nameTextView;
+    TextView locationTextView;
+    TextView dateRangeTextView;
+    TextView tentTextView;
+    TextView bagTextView;
+    TextView eggsTextView;
+    TextView baconTextView;
+
+    ImageView viewLocationButton;
+
+    TextView weatherTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,38 +64,52 @@ public class ViewTripActivity extends AppCompatActivity {
         });
         Intent intent = getIntent();
         int tid = intent.getIntExtra(getString(R.string.tid), 0);
-        db = Room.databaseBuilder(getApplicationContext(),
-                AppDatabase.class, getString(R.string.database_name)).allowMainThreadQueries().build();
-        trip = db.tripDao().findByTid(tid);
-        TextView nameTextView = findViewById(R.id.nameTextView);
-        TextView locationTextView = findViewById(R.id.locationTextView);
-        TextView dateRangeTextView = findViewById(R.id.dateRangeTextView);
-        TextView tentTextView = findViewById(R.id.tentTextView);
-        TextView bagTextView = findViewById(R.id.sleepingBagTextView);
-        TextView eggsTextView = findViewById(R.id.eggsTextView);
-        TextView baconTextView = findViewById(R.id.baconTextView);
+/*        db = Room.databaseBuilder(getApplicationContext(),
+                AppDatabase.class, getString(R.string.database_name)).allowMainThreadQueries().build();*/
+        nameTextView = findViewById(R.id.nameTextView);
+        locationTextView = findViewById(R.id.locationTextView);
+        dateRangeTextView = findViewById(R.id.dateRangeTextView);
+        tentTextView = findViewById(R.id.tentTextView);
+        bagTextView = findViewById(R.id.sleepingBagTextView);
+        eggsTextView = findViewById(R.id.eggsTextView);
+        baconTextView = findViewById(R.id.baconTextView);
+        viewLocationButton = findViewById(R.id.viewLocationButton);
+        db = AppDatabase.getInstance(getApplicationContext());
+        ViewTripViewModelFactory viewTripViewModelFactory = new ViewTripViewModelFactory(db, tid);
+        final ViewTripViewModel viewTripViewModel = ViewModelProviders.of(this, viewTripViewModelFactory).get(ViewTripViewModel.class);
+        viewTripViewModel.getTrip().observe(this, new Observer<Trip>() {
+            @Override
+            public void onChanged(Trip trip) {
+                viewTripViewModel.getTrip().removeObserver(this);
+                setTripVariable(trip);
+                setTextViews(trip);
+                setLocationButton(trip);
+                setWeatherView(trip);
+            }
+        });
 
-        nameTextView.setText(trip.name);
-        locationTextView.setText(trip.location);
-        dateRangeTextView.setText(trip.arrival + " - " + trip.departure);
-        tentTextView.setText(trip.tent + getString(R.string.tent_quantity));
-        bagTextView.setText(trip.bag + getString(R.string.bag_quantity));
-        eggsTextView.setText(trip.eggs + getString(R.string.eggs_quantity));
-        baconTextView.setText(trip.bacon + getString(R.string.bacon_quantity));
+    }
 
-        ImageView viewLocationButton = findViewById(R.id.viewLocationButton);
+    public void setTripVariable(Trip mTrip){
+        trip = mTrip;
+    }
+
+    public void setLocationButton(final Trip mTrip){
         viewLocationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Uri gmmIntentUri = Uri.parse("geo:" + trip.location);
+                Uri gmmIntentUri = Uri.parse("geo:" + mTrip.location);
                 Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
                 mapIntent.setPackage(getString(R.string.google_maps_package));
                 startActivity(mapIntent);
             }
         });
+    }
+
+    public void setWeatherView(Trip trip){
         String location = trip.location;
         String coordinates[] = location.split(",");
-        final TextView weatherTextView = findViewById(R.id.weatherTextView);
+        weatherTextView = findViewById(R.id.weatherTextView);
         String appid = BuildConfig.openweatherkey;
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(getString(R.string.open_weather_map_base_url))
@@ -102,7 +136,16 @@ public class ViewTripActivity extends AppCompatActivity {
 
             }
         });
+    }
 
+    public void setTextViews(Trip trip){
+        nameTextView.setText(trip.name);
+        locationTextView.setText(trip.location);
+        dateRangeTextView.setText(trip.arrival + " - " + trip.departure);
+        tentTextView.setText(trip.tent + getString(R.string.tent_quantity));
+        bagTextView.setText(trip.bag + getString(R.string.bag_quantity));
+        eggsTextView.setText(trip.eggs + getString(R.string.eggs_quantity));
+        baconTextView.setText(trip.bacon + getString(R.string.bacon_quantity));
     }
 
     public void editTrip(View view) {
@@ -121,8 +164,16 @@ public class ViewTripActivity extends AppCompatActivity {
     }
 
     public void deleteTrip(View view) {
-        db.tripDao().deleteByTid(trip.tid);
-        Intent intent = new Intent(this, SelectTripActivity.class);
-        startActivity(intent);
+        //main thread exception:
+        final Context context = this;
+        AppExecutors.getInstance().diskIO().execute(new Runnable() {
+            @Override
+            public void run() {
+                db.tripDao().deleteByTid(trip.tid);
+                Intent intent = new Intent(context, SelectTripActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }
