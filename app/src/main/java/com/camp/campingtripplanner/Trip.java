@@ -1,4 +1,4 @@
-package com.example.campingtripplanner;
+package com.camp.campingtripplanner;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;

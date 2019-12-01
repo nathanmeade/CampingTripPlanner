@@ -1,4 +1,4 @@
-package com.example.campingtripplanner;
+package com.camp.campingtripplanner;
 
 import org.junit.Test;
 

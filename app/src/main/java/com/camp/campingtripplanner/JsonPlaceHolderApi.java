@@ -1,4 +1,4 @@
-package com.example.campingtripplanner;
+package com.camp.campingtripplanner;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

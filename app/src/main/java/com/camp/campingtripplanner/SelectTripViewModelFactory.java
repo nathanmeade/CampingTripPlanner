@@ -1,9 +1,8 @@
-package com.example.campingtripplanner;
+package com.camp.campingtripplanner;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelStoreOwner;
 
 public class SelectTripViewModelFactory extends ViewModelProvider.NewInstanceFactory {
     final private AppDatabase mAppDatabase;

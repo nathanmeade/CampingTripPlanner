@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.campingtripplanner">
+    package="com.camp.campingtripplanner">
 
     <application
         android:allowBackup="true"
@@ -10,17 +10,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".MapActivity" />
+        <activity android:name="com.camp.campingtripplanner.MapActivity" />
         <activity
-            android:name=".SelectTripActivity"
+            android:name="com.camp.campingtripplanner.SelectTripActivity"
             android:label="@string/select_trip" />
         <activity
-            android:name=".ViewTripActivity"
+            android:name="com.camp.campingtripplanner.ViewTripActivity"
             android:label="@string/view_trip" />
         <activity
-            android:name=".CreateTripActivity"
+            android:name="com.camp.campingtripplanner.CreateTripActivity"
             android:label="@string/create_trip" />
-        <activity android:name=".MainActivity">
+        <activity android:name="com.camp.campingtripplanner.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -32,7 +32,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <receiver android:name=".NewAppWidget">
+        <receiver android:name="com.camp.campingtripplanner.NewAppWidget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>

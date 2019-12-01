@@ -1,6 +1,4 @@
-package com.example.campingtripplanner;
-
-import java.util.ArrayList;
+package com.camp.campingtripplanner;
 
 class Weather {
     private Main main;
