@@ -161,12 +161,23 @@
                 android:id="@+id/deleteButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="32dp"
+                android:layout_marginLeft="20dp"
                 android:background="@color/colorAccent"
                 android:text="@string/delete"
                 android:textColor="@color/colorPrimaryDark"
                 android:onClick="deleteTrip"
-                android:layout_marginStart="32dp" />
+                android:layout_marginStart="20dp" />
+
+                <Button
+                    android:id="@+id/shareButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:background="@color/colorAccent"
+                    android:text="@string/share"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:onClick="shareTrip"
+                    android:layout_marginStart="20dp" />
             </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

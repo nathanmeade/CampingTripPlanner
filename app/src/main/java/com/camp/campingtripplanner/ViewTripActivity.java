@@ -35,6 +35,14 @@ public class ViewTripActivity extends AppCompatActivity {
     TextView eggsTextView;
     TextView baconTextView;
 
+    String name;
+    String location;
+    String dateRange;
+    String tent;
+    String bag;
+    String eggs;
+    String bacon;
+
     ImageView viewLocationButton;
 
     TextView weatherTextView;
@@ -88,7 +96,7 @@ public class ViewTripActivity extends AppCompatActivity {
         viewLocationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Uri gmmIntentUri = Uri.parse("geo:" + mTrip.location);
+                Uri gmmIntentUri = Uri.parse("geo:" + mTrip.location + "?q=" + mTrip.location + "(Campsite)");
                 Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
                 mapIntent.setPackage(getString(R.string.google_maps_package));
                 startActivity(mapIntent);
@@ -138,6 +146,22 @@ public class ViewTripActivity extends AppCompatActivity {
         baconTextView.setText(trip.bacon + getString(R.string.bacon_quantity));
     }
 
+    private void setShareableString(){
+        name = nameTextView.getText().toString();
+        location = locationTextView.getText().toString();
+        dateRange = dateRangeTextView.getText().toString();
+        tent = tentTextView.getText().toString();
+        bag = bagTextView.getText().toString();
+        eggs = eggsTextView.getText().toString();
+        bacon = baconTextView.getText().toString();
+    }
+
+    private String getShareableString(){
+        setShareableString();
+        String shareableString = "Camping trip:\n\n" + name + "\nhttp://maps.google.com/?q=" + location + "\n" + dateRange + "\n" + tent + "\n" + bag + "\n" + eggs + "\n" + bacon;
+        return shareableString;
+    }
+
     public void editTrip(View view) {
         Bundle bundle = new Bundle();
         bundle.putString(getString(R.string.name_lowercase), trip.name);
@@ -164,5 +188,16 @@ public class ViewTripActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void shareTrip(View view) {
+        String tripDetails;
+        /*tripDetails =    */
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Camping Trip:");
+        intent.putExtra(Intent.EXTRA_TEXT, getShareableString());
+        startActivity(intent);
     }
 }

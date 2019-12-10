@@ -15,10 +15,12 @@ import android.graphics.PorterDuff;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Calendar;
 import java.util.Random;
@@ -220,27 +222,33 @@ public class CreateTripActivity extends AppCompatActivity {
     }
 
     public void saveTrip(View view) {
-        value = rand.nextInt(500);
         getCurrentTripValues();
-        final Trip trip = new Trip();
-        trip.tid = value;
-        trip.name = name;
-        trip.location = location;
-        trip.arrival = arrival;
-        trip.departure = departure;
-        trip.tent = tent;
-        trip.bag = bag;
-        trip.eggs = eggs;
-        trip.bacon = bacon;
-        AppExecutors.getInstance().diskIO().execute(new Runnable() {
-            @Override
-            public void run() {
-                db.tripDao().insertAll(trip);
-                Intent intent = new Intent(context, ViewTripActivity.class);
-                intent.putExtra("tid", value);
-                startActivity(intent);
-            }
-        });
+        if (validateInput()){
+            value = rand.nextInt(500);
+            final Trip trip = new Trip();
+            trip.tid = value;
+            trip.name = name;
+            trip.location = location;
+            trip.arrival = arrival;
+            trip.departure = departure;
+            trip.tent = tent;
+            trip.bag = bag;
+            trip.eggs = eggs;
+            trip.bacon = bacon;
+            AppExecutors.getInstance().diskIO().execute(new Runnable() {
+                @Override
+                public void run() {
+                    db.tripDao().insertAll(trip);
+                    Intent intent = new Intent(context, ViewTripActivity.class);
+                    intent.putExtra("tid", value);
+                    startActivity(intent);
+                }
+            });
+        }
+        else {
+            Toast.makeText(this, "Make sure all fields have been filled.", Toast.LENGTH_LONG).show();
+        }
+
 
     }
 
@@ -277,6 +285,36 @@ public class CreateTripActivity extends AppCompatActivity {
         eggsIncrementImageView = findViewById(R.id.eggsIncrementButton);
         baconDecrementImageView = findViewById(R.id.baconDecrementButton);
         baconIncrementImageView = findViewById(R.id.baconIncrementButton);
+    }
+
+    private boolean validateInput(){
+/*        if (name.equals("")){
+            return false;
+        }
+        if (location.equals("")){
+            return false;
+        }
+        if (arrival.equals("")){
+            return false;
+        }
+        if (departure.equals("")){
+            return false;
+        }*/
+
+        if (name == null){
+            return false;
+        }
+        if (location.equals("(None)")){
+            return false;
+        }
+        if (arrival.equals("(None)")){
+            return false;
+        }
+        if (departure.equals("(None)")){
+            return false;
+        }
+
+        return true;
     }
 
     public void getCurrentTripValues(){

@@ -1,9 +1,17 @@
 package com.camp.campingtripplanner;
 
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentActivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
@@ -14,7 +22,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MapActivity extends FragmentActivity implements OnMapReadyCallback {
+public class MapActivity extends AppCompatActivity implements OnMapReadyCallback {
     private Button cancelButton;
     private Button saveButton;
     private String location;
@@ -24,10 +32,13 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     private GoogleMap mMap;
     private LatLng latLngToSave;
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         receivedIntent = getIntent();
         receivedBundle = receivedIntent.getExtras();
         cancelButton = findViewById(R.id.cancel_button);
@@ -58,8 +69,38 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.hybrid:
+                mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+                return true;
+            case R.id.normal:
+                mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+                return true;
+            case R.id.satellite:
+                mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+                return true;
+            case R.id.terrain:
+                mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+
+        mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+
         mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
 
             @Override
@@ -73,9 +114,10 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                 mMap.addMarker(markerOptions);
             }
         });
-        LatLng clemson = new LatLng(34.686440, -82.823330);
-        mMap.addMarker(new MarkerOptions().position(clemson).title(getString(R.string.original_marker_title)));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(clemson));
+        LatLng mtMitchell = new LatLng(35.764904, -82.265171);
+        latLngToSave = mtMitchell;
+        mMap.addMarker(new MarkerOptions().position(mtMitchell).title(getString(R.string.original_marker_title)));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(mtMitchell));
     }
 
     public void putTripIntentExtras(Intent intent){
