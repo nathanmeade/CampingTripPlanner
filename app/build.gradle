@@ -1,47 +1,48 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 33
     defaultConfig {
         applicationId "com.camp.campingtripplanner"
-        minSdkVersion 15
-        targetSdkVersion 28
-        versionCode 4
-        versionName "1.3"
+        minSdkVersion 19
+        targetSdkVersion 33
+        versionCode 5
+        versionName "1.4"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         debug {
-            buildConfigField("String", "googlemapskey", google_maps_key)
-            resValue("string", "google_maps_key", google_maps_key)
-            buildConfigField("String", "openweatherkey", openweather_key)
-            resValue("string", "openweather_key", openweather_key)
+//            buildConfigField("String", "googlemapskey", google_maps_key)
+//            resValue("string", "google_maps_key", google_maps_key)
+//            buildConfigField("String", "openweatherkey", openweather_key)
+//            resValue("string", "openweather_key", openweather_key)
         }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.release
-            buildConfigField("String", "googlemapskey", google_maps_key)
-            resValue("string", "google_maps_key", google_maps_key)
-            buildConfigField("String", "openweatherkey", openweather_key)
-            resValue("string", "openweather_key", openweather_key)
+//            signingConfig signingConfigs.release
+//            buildConfigField("String", "googlemapskey", google_maps_key)
+//            resValue("string", "google_maps_key", google_maps_key)
+//            buildConfigField("String", "openweatherkey", openweather_key)
+//            resValue("string", "openweather_key", openweather_key)
         }
     }
+    namespace 'com.camp.campingtripplanner'
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.2.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-    implementation 'com.android.support:recyclerview-v7:28.0.0'
-    implementation 'com.google.android.gms:play-services-maps:17.0.0'
-    def room_version = "2.2.0-alpha02"
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test:runner:1.5.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    implementation 'com.google.android.gms:play-services-maps:18.1.0'
+    def room_version = "2.6.0-alpha01"
     implementation "androidx.room:room-runtime:$room_version"
     annotationProcessor "androidx.room:room-compiler:$room_version"
-    implementation 'com.squareup.retrofit2:retrofit:2.6.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.6.0'
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation "androidx.recyclerview:recyclerview:1.3.0"
 }
