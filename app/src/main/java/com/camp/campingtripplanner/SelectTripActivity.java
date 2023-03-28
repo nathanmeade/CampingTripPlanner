@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -54,7 +55,7 @@ public class SelectTripActivity extends AppCompatActivity implements TripListAda
         context = this;
         db = AppDatabase.getInstance(getApplicationContext());
         SelectTripViewModelFactory selectTripViewModelFactory = new SelectTripViewModelFactory(db);
-        SelectTripViewModel selectTripViewModel = ViewModelProviders.of(this, selectTripViewModelFactory).get(SelectTripViewModel.class);
+        SelectTripViewModel selectTripViewModel = new ViewModelProvider(this, selectTripViewModelFactory).get(SelectTripViewModel.class);
         selectTripViewModel.getTrips().observe(this, new Observer<List<Trip>>() {
             @Override
             public void onChanged(List<Trip> trips) {
