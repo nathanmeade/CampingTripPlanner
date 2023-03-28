@@ -108,7 +108,7 @@ public class ViewTripActivity extends AppCompatActivity {
         String location = trip.location;
         String coordinates[] = location.split(",");
         weatherTextView = findViewById(R.id.weatherTextView);
-        String appid = BuildConfig.openweatherkey;
+        String appid = BuildConfig.OPEN_WEATHER_API_KEY;
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(getString(R.string.open_weather_map_base_url))
                 .addConverterFactory(GsonConverterFactory.create())
