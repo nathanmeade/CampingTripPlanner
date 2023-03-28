@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.room.Room;
 
@@ -74,7 +75,7 @@ public class ViewTripActivity extends AppCompatActivity {
         viewLocationButton = findViewById(R.id.viewLocationButton);
         db = AppDatabase.getInstance(getApplicationContext());
         ViewTripViewModelFactory viewTripViewModelFactory = new ViewTripViewModelFactory(db, tid);
-        final ViewTripViewModel viewTripViewModel = ViewModelProviders.of(this, viewTripViewModelFactory).get(ViewTripViewModel.class);
+        final ViewTripViewModel viewTripViewModel = new ViewModelProvider(this, viewTripViewModelFactory).get(ViewTripViewModel.class);
         viewTripViewModel.getTrip().observe(this, new Observer<Trip>() {
             @Override
             public void onChanged(Trip trip) {
