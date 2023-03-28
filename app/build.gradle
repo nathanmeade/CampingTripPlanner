@@ -12,19 +12,19 @@ android {
     }
     buildTypes {
         debug {
-//            buildConfigField("String", "googlemapskey", google_maps_key)
-//            resValue("string", "google_maps_key", google_maps_key)
-//            buildConfigField("String", "openweatherkey", openweather_key)
-//            resValue("string", "openweather_key", openweather_key)
+            buildConfigField("String", "googlemapskey", google_maps_key)
+            resValue("string", "google_maps_key", google_maps_key)
+            buildConfigField("String", "openweatherkey", openweather_key)
+            resValue("string", "openweather_key", openweather_key)
         }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-//            signingConfig signingConfigs.release
-//            buildConfigField("String", "googlemapskey", google_maps_key)
-//            resValue("string", "google_maps_key", google_maps_key)
-//            buildConfigField("String", "openweatherkey", openweather_key)
-//            resValue("string", "openweather_key", openweather_key)
+            signingConfig signingConfigs.release
+            buildConfigField("String", "googlemapskey", google_maps_key)
+            resValue("string", "google_maps_key", google_maps_key)
+            buildConfigField("String", "openweatherkey", openweather_key)
+            resValue("string", "openweather_key", openweather_key)
         }
     }
     namespace 'com.camp.campingtripplanner'
