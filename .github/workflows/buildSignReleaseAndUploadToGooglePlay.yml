@@ -53,4 +53,3 @@ jobs:
           packageName: com.camp.campingtripplanner
           releaseFiles: app/build/outputs/bundle/release/app-release.apk
           track: production
-          userFraction: 1.0
