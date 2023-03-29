@@ -20,15 +20,11 @@ jobs:
           distribution: 'temurin'
           cache: gradle
 
-      - name: Access OPEN_WEATHER_API_KEY
+      - name: Access OPEN_WEATHER_API_KEY and MAPS_API_KEY
         env:
           OPEN_WEATHER_API_KEY: ${{ secrets.OPEN_WEATHER_API_KEY }}
-        run: echo -e "\n"OPEN_WEATHER_API_KEY=\"$OPEN_WEATHER_API_KEY\" > ./local.properties
-        
-      - name: Access MAPS_API_KEY
-        env:
           MAPS_API_KEY: ${{ secrets.MAPS_API_KEY }}
-        run: echo -e "\n"MAPS_API_KEY=\"$MAPS_API_KEY\" > ./local.properties
+        run: echo -e "\n"OPEN_WEATHER_API_KEY=\"$OPEN_WEATHER_API_KEY\\n"MAPS_API_KEY=\"$MAPS_API_KEY\" > ./local.properties
 
       - name: Make gradlew executable
         run: chmod +x ./gradlew
