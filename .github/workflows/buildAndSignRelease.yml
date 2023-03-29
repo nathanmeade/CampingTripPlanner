@@ -22,12 +22,12 @@ jobs:
 
       - name: Access OPEN_WEATHER_API_KEY
         env:
-          API_KEY: ${{ secrets.OPEN_WEATHER_API_KEY }}
+          OPEN_WEATHER_API_KEY: ${{ secrets.OPEN_WEATHER_API_KEY }}
         run: echo OPEN_WEATHER_API_KEY=\"$OPEN_WEATHER_API_KEY\" > ./local.properties
         
       - name: Access MAPS_API_KEY
         env:
-          API_KEY: ${{ secrets.MAPS_API_KEY }}
+          MAPS_API_KEY: ${{ secrets.MAPS_API_KEY }}
         run: echo MAPS_API_KEY=\"$MAPS_API_KEY\" > ./local.properties
 
       - name: Make gradlew executable
