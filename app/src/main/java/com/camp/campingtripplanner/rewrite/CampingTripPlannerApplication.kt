@@ -1,4 +1,4 @@
-package com.camp.campingtripplanner
+package com.camp.campingtripplanner.rewrite
 
 import android.app.Application
 

@@ -1,26 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
-        android:name=".CampingTripPlannerApplication"
+        android:name=".rewrite.CampingTripPlannerApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name="com.camp.campingtripplanner.MapActivity" />
         <activity
-            android:name="com.camp.campingtripplanner.SelectTripActivity"
+            android:name=".MainActivityComposeMaterial3"
+            android:exported="false"
+            android:label="@string/title_activity_main_compose_material3"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".MapActivity" />
+        <activity
+            android:name=".SelectTripActivity"
             android:label="@string/select_trip" />
         <activity
-            android:name="com.camp.campingtripplanner.ViewTripActivity"
+            android:name=".ViewTripActivity"
             android:label="@string/view_trip" />
         <activity
-            android:name="com.camp.campingtripplanner.CreateTripActivity"
+            android:name=".CreateTripActivity"
             android:label="@string/create_trip" />
-        <activity android:name="com.camp.campingtripplanner.MainActivity"
+        <activity
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -33,7 +40,8 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="${MAPS_API_KEY}" />
 
-        <receiver android:name="com.camp.campingtripplanner.NewAppWidget"
+        <receiver
+            android:name=".NewAppWidget"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -44,7 +52,5 @@
                 android:resource="@xml/new_app_widget_info" />
         </receiver>
     </application>
-
-    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>
