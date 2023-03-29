@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId = "com.camp.campingtripplanner"
-        minSdk = 19
+        minSdk = 21
         targetSdk = 33
         versionCode = 6
         versionName = "1.5"
