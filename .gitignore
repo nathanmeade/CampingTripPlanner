@@ -1,3 +1,5 @@
+app/release/*
+your_signing_keystore_base64_encoded.txt
 output.json
 *.apk
 upload_certificate.pem
