@@ -73,6 +73,8 @@ dependencies {
     implementation("androidx.recyclerview:recyclerview:1.3.0")
     implementation("com.google.dagger:hilt-android:2.44")
     kapt("com.google.dagger:hilt-android-compiler:2.44")
+    val nav_version = "2.5.3"
+    implementation("androidx.navigation:navigation-compose:$nav_version")
 }
 
 kapt {

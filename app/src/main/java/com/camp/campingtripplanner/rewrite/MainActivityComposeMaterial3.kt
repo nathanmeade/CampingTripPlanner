@@ -3,59 +3,38 @@ package com.camp.campingtripplanner.rewrite
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.*
-import androidx.compose.material3.Button
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.camp.campingtripplanner.rewrite.ui.CreateTripScreen
+import com.camp.campingtripplanner.rewrite.ui.HomeScreen
 
 //@AndroidEntryPoint
 class MainActivityComposeMaterial3 : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            content()
+            MainScreen()
         }
     }
 }
 
 @Composable
-fun content() {
-    MaterialTheme {
-        // A surface container using the 'background' color from the theme
-        Surface(
-            modifier = Modifier.fillMaxSize(),
-            color = MaterialTheme.colorScheme.background,
-        ) {
-            Column(
-                modifier = Modifier.fillMaxSize(),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                Button(
-                    onClick = { /*TODO*/ }
-                ) {
-                    Text(
-                        text = "CREATE TRIP",
-                        fontSize = 40.sp
-                    )
+fun MainScreen() {
+    val navController = rememberNavController()
+
+    NavHost(navController = navController, startDestination = NavScreen.HomeScreen.route) {
+        composable(route = NavScreen.HomeScreen.route) {
+            HomeScreen(
+                onCreateTripClicked = {
+                    navController.navigate(NavScreen.CreateTripScreen.route)
                 }
-                Spacer(modifier = Modifier.height(16.dp))
-                Button(
-                    onClick = { /*TODO*/ }
-                ) {
-                    Text(
-                        text = "SELECT TRIP",
-                        fontSize = 40.sp
-                    )
-                }
-            }
+            )
+        }
+        composable(route = NavScreen.CreateTripScreen.route) {
+            CreateTripScreen()
         }
     }
 }
@@ -63,5 +42,10 @@ fun content() {
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-    content()
+    MainScreen()
+}
+
+sealed class NavScreen(val route: String) {
+    object HomeScreen : NavScreen("HomeScreen")
+    object CreateTripScreen : NavScreen("CreateTripScreen")
 }
