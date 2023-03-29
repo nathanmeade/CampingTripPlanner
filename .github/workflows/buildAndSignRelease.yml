@@ -25,8 +25,8 @@ jobs:
           OPEN_WEATHER_API_KEY: ${{ secrets.OPEN_WEATHER_API_KEY }}
           MAPS_API_KEY: ${{ secrets.MAPS_API_KEY }}
         run: |
-            echo OPEN_WEATHER_API_KEY=\"$OPEN_WEATHER_API_KEY\" > ./local.properties
-            echo MAPS_API_KEY=\"$MAPS_API_KEY\" > ./local.properties
+            echo OPEN_WEATHER_API_KEY=\"$OPEN_WEATHER_API_KEY\" >> ./local.properties
+            echo MAPS_API_KEY=\"$MAPS_API_KEY\" >> ./local.properties
 
       - name: Make gradlew executable
         run: chmod +x ./gradlew
