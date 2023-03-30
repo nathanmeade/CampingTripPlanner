@@ -10,6 +10,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.camp.campingtripplanner.rewrite.ui.CreateTripScreen
 import com.camp.campingtripplanner.rewrite.ui.HomeScreen
+import com.camp.campingtripplanner.rewrite.ui.SelectTripScreen
 
 //@AndroidEntryPoint
 class MainActivityComposeMaterial3 : ComponentActivity() {
@@ -30,11 +31,17 @@ fun MainScreen() {
             HomeScreen(
                 onCreateTripClicked = {
                     navController.navigate(NavScreen.CreateTripScreen.route)
+                },
+                onSelectTripClicked = {
+                    navController.navigate(NavScreen.SelectTripScreen.route)
                 }
             )
         }
         composable(route = NavScreen.CreateTripScreen.route) {
             CreateTripScreen()
+        }
+        composable(route = NavScreen.SelectTripScreen.route) {
+            SelectTripScreen()
         }
     }
 }
@@ -48,4 +55,5 @@ fun DefaultPreview() {
 sealed class NavScreen(val route: String) {
     object HomeScreen : NavScreen("HomeScreen")
     object CreateTripScreen : NavScreen("CreateTripScreen")
+    object SelectTripScreen : NavScreen("SelectTripScreen")
 }

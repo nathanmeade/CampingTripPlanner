@@ -13,7 +13,8 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 fun HomeScreen(
-    onCreateTripClicked: () -> Unit
+    onCreateTripClicked: () -> Unit,
+    onSelectTripClicked: () -> Unit
 ) {
     MaterialTheme {
         // A surface container using the 'background' color from the theme
@@ -38,7 +39,9 @@ fun HomeScreen(
                 }
                 Spacer(modifier = Modifier.height(16.dp))
                 Button(
-                    onClick = { /*TODO*/ }
+                    onClick = {
+                        onSelectTripClicked()
+                    }
                 ) {
                     Text(
                         text = "SELECT TRIP",
