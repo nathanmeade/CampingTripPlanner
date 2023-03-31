@@ -13,4 +13,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Camping Trip Planner"
-include ':app'
+include(":app")
