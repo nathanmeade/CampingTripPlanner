@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Camping Trip Planner</string>
+    <string name="open_weather_base_url">https://api.openweathermap.org/data/2.5/</string>
 </resources>

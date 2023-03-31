@@ -64,6 +64,11 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-test-manifest:${rootProject.extra["compose_version"]}")
     implementation("com.google.dagger:hilt-android:2.44")
     kapt("com.google.dagger:hilt-android-compiler:2.44")
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    val room_version = "2.5.1"
+    implementation("androidx.room:room-runtime:$room_version")
+    annotationProcessor("androidx.room:room-compiler:$room_version")
 }
 
 kapt {
