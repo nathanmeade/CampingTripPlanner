@@ -11,7 +11,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 
 @Composable
-fun TripDetailScreen() {
+fun TripDetailScreen(tripId: Int?) {
+//    val number = 6
     MaterialTheme {
         // A surface container using the 'background' color from the theme
         Surface(
@@ -23,7 +24,7 @@ fun TripDetailScreen() {
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Text(text = "Trip Detail Screen")
+                Text(text = "Trip Detail Screen: $tripId")
             }
         }
     }

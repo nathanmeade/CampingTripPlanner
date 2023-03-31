@@ -5,9 +5,11 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.camp.campingtripplanner.ui.createtrip.CreateTripScreen
 import com.camp.campingtripplanner.ui.home.HomeScreen
 import com.camp.campingtripplanner.ui.selecttrip.SelectTripScreen
@@ -41,16 +43,29 @@ fun MainScreen() {
         }
         composable(route = NavScreen.CreateTripScreen.route) {
             CreateTripScreen {
-                navController.navigate(NavScreen.TripDetailScreen.route)
+                navController.navigate(NavScreen.TripDetailScreen.route + "/${5}") {
+//
+                }
             }
         }
         composable(route = NavScreen.SelectTripScreen.route) {
             SelectTripScreen {
-                navController.navigate(NavScreen.TripDetailScreen.route)
+                navController.navigate(NavScreen.TripDetailScreen.route + "/${7}") {
+//                    it.arguments()
+                }
             }
         }
-        composable(route = NavScreen.TripDetailScreen.route) {
-            TripDetailScreen()
+        composable(
+            route = NavScreen.TripDetailScreen.route + "/{tripId}",
+            arguments = listOf(
+                navArgument("tripId") {
+                    type = NavType.IntType
+                }
+            )
+        ) {
+            TripDetailScreen(
+                it.arguments?.getInt("tripId")
+            )
         }
     }
 }
