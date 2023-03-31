@@ -12,7 +12,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun CreateTripScreen(onTripCreated: () -> Unit) {
+fun CreateTripScreen(onTripCreated: (Int) -> Unit) {
+    val argumentNumber = 6
     MaterialTheme {
         // A surface container using the 'background' color from the theme
         Surface(
@@ -34,7 +35,7 @@ fun CreateTripScreen(onTripCreated: () -> Unit) {
                 }
                 Spacer(modifier = Modifier.height(16.dp))
                 Button(
-                    onClick = { onTripCreated() }
+                    onClick = { onTripCreated(argumentNumber) }
                 ) {
                     Text(
                         text = "Tap For TripDetail",

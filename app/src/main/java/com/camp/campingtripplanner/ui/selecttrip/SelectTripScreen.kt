@@ -12,7 +12,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 
 @Composable
-fun SelectTripScreen(onTripSelected: () -> Unit) {
+fun SelectTripScreen(onTripSelected: (Int) -> Unit) {
+    val argumentNumber = 4
     MaterialTheme {
         // A surface container using the 'background' color from the theme
         Surface(
@@ -25,7 +26,7 @@ fun SelectTripScreen(onTripSelected: () -> Unit) {
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(text = "Select Trip Screen")
-                Button(onClick = onTripSelected) {
+                Button(onClick = { onTripSelected(argumentNumber) }) {
                     Text(text = "Tap To Select Default Trip")
                 }
             }

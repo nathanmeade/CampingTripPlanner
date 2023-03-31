@@ -43,14 +43,14 @@ fun MainScreen() {
         }
         composable(route = NavScreen.CreateTripScreen.route) {
             CreateTripScreen {
-                navController.navigate(NavScreen.TripDetailScreen.route + "/${5}") {
+                navController.navigate(NavScreen.TripDetailScreen.route + "/${it}") {
 //
                 }
             }
         }
         composable(route = NavScreen.SelectTripScreen.route) {
             SelectTripScreen {
-                navController.navigate(NavScreen.TripDetailScreen.route + "/${7}") {
+                navController.navigate(NavScreen.TripDetailScreen.route + "/${it}") {
 //                    it.arguments()
                 }
             }
