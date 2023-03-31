@@ -1,9 +1,8 @@
-package com.camp.campingtripplanner.ui.selecttrip
+package com.camp.campingtripplanner.ui.tripdetail
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -12,7 +11,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 
 @Composable
-fun SelectTripScreen(onTripSelected: () -> Unit) {
+fun TripDetailScreen() {
     MaterialTheme {
         // A surface container using the 'background' color from the theme
         Surface(
@@ -24,10 +23,7 @@ fun SelectTripScreen(onTripSelected: () -> Unit) {
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Text(text = "Select Trip Screen")
-                Button(onClick = onTripSelected) {
-                    Text(text = "Tap To Select Default Trip")
-                }
+                Text(text = "Trip Detail Screen")
             }
         }
     }

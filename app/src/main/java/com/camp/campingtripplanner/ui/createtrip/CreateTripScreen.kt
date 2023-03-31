@@ -12,7 +12,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun CreateTripScreen() {
+fun CreateTripScreen(onTripCreated: () -> Unit) {
     MaterialTheme {
         // A surface container using the 'background' color from the theme
         Surface(
@@ -34,10 +34,10 @@ fun CreateTripScreen() {
                 }
                 Spacer(modifier = Modifier.height(16.dp))
                 Button(
-                    onClick = { /*TODO*/ }
+                    onClick = { onTripCreated() }
                 ) {
                     Text(
-                        text = "SEasdfLECT TRIP",
+                        text = "Tap For TripDetail",
                         fontSize = 40.sp
                     )
                 }
