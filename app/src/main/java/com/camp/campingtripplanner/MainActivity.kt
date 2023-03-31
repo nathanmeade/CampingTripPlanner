@@ -10,6 +10,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.camp.campingtripplanner.ui.createtrip.CreateTripScreen
+import com.camp.campingtripplanner.ui.home.HomeScreen
+import com.camp.campingtripplanner.ui.selecttrip.SelectTripScreen
 import com.camp.campingtripplanner.ui.theme.CampingTripPlannerTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -18,28 +24,43 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            CampingTripPlannerTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Greeting("Android")
-                }
-            }
+            MainScreen()
         }
     }
 }
 
 @Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
+fun MainScreen() {
+    val navController = rememberNavController()
+
+    NavHost(navController = navController, startDestination = NavScreen.HomeScreen.route) {
+        composable(route = NavScreen.HomeScreen.route) {
+            HomeScreen(
+                onCreateTripClicked = {
+                    navController.navigate(NavScreen.CreateTripScreen.route)
+                },
+                onSelectTripClicked = {
+                    navController.navigate(NavScreen.SelectTripScreen.route)
+                }
+            )
+        }
+        composable(route = NavScreen.CreateTripScreen.route) {
+            CreateTripScreen()
+        }
+        composable(route = NavScreen.SelectTripScreen.route) {
+            SelectTripScreen()
+        }
+    }
 }
 
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-    CampingTripPlannerTheme {
-        Greeting("Android")
-    }
+    MainScreen()
+}
+
+sealed class NavScreen(val route: String) {
+    object HomeScreen : NavScreen("HomeScreen")
+    object CreateTripScreen : NavScreen("CreateTripScreen")
+    object SelectTripScreen : NavScreen("SelectTripScreen")
 }
