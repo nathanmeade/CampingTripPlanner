@@ -14,6 +14,16 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object AppModule {
 
+    @Provides
+    fun getWeatherApiKey() : String {
+        return BuildConfig.WEATHER_API_API_KEY
+    }
+
+//    @Provides
+//    fun getWeatherApiKey() : String {
+//        return BuildConfig.OPEN_WEATHER_API_KEY
+//    }
+
 //    @Provides
 //    @Singleton
 //    fun provideOpenWeatherApi(@ApplicationContext context: Context): OpenWeatherApi {

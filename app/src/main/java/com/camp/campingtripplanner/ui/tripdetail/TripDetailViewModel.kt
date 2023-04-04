@@ -12,6 +12,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class TripDetailViewModel @Inject constructor(private val weatherRepository: WeatherRepository): ViewModel() {
+    @Inject lateinit var apiKey: String
     var _weather : MutableStateFlow<WeatherData> = MutableStateFlow(WeatherData(4.0))
     val weather : StateFlow<WeatherData>
         get() = _weather
@@ -19,7 +20,7 @@ class TripDetailViewModel @Inject constructor(private val weatherRepository: Wea
     fun getCurrentWeather() {
         val myScope = CoroutineScope(Dispatchers.IO)
         myScope.launch {
-            _weather.value = weatherRepository.getCurrentWeather(34.901910,-82.358923,"")
+            _weather.value = weatherRepository.getCurrentWeather(34.901910,-82.358923, apiKey)
         }
     }
 }
