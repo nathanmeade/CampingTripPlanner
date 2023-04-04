@@ -7,7 +7,7 @@ class RoomCampingTripRepository(private val dao: CampingTripDao) : CampingTripRe
         return dao.getAllCampingTrips()
     }
 
-    fun getCampingTripById(id: Long) : Flow<CampingTrip?> {
+    override fun getCampingTripById(id: Long) : Flow<CampingTrip?> {
         return dao.getCampingTripById(id)
     }
 

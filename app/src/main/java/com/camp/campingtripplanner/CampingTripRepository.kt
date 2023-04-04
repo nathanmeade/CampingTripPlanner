@@ -6,4 +6,6 @@ interface CampingTripRepository {
     suspend fun insertCampingTrip(campingTrip: CampingTrip)
 
     fun getAllCampingTrips() : Flow<List<CampingTrip>>
+
+    fun getCampingTripById(id: Long) : Flow<CampingTrip?>
 }

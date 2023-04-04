@@ -2,7 +2,9 @@ package com.camp.campingtripplanner.ui.tripdetail
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -25,6 +27,7 @@ import retrofit2.Call
 fun TripDetailScreen(tripId: Int?, viewModel: TripDetailViewModel) {
     val weather by viewModel.weather.collectAsState()
     viewModel.getCurrentWeather()
+    viewModel.getTrip()
     // A surface container using the 'background' color from the theme
     Surface(
         modifier = Modifier.fillMaxSize(),
@@ -36,7 +39,19 @@ fun TripDetailScreen(tripId: Int?, viewModel: TripDetailViewModel) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(text = "Trip Detail Screen: $tripId")
+            Text(text = "Trip Detail Screen: ${viewModel.trip}")
             Text(text = "Trip Detail Screen: ${weather.temp}")
+            Row() {
+                Button(onClick = { /*TODO*/ }) {
+                    Text(text = "Edit")
+                }
+                Button(onClick = { /*TODO*/ }) {
+                    Text(text = "Delete")
+                }
+                Button(onClick = { /*TODO*/ }) {
+                    Text(text = "Cancel")
+                }
+            }
         }
     }
 }
