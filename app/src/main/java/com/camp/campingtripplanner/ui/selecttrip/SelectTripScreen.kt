@@ -8,6 +8,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -18,9 +19,11 @@ import com.camp.campingtripplanner.NavScreen
 import com.camp.campingtripplanner.ui.createtrip.CreateTripScreen
 
 @Composable
-fun SelectTripScreen(onTripSelected: (Int) -> Unit) {
+fun SelectTripScreen(onTripSelected: (Int) -> Unit, viewModel: SelectTripViewModel) {
     val argumentNumber = 4
-    val selectTripViewModel: SelectTripViewModel = viewModel()
+//    val trips = viewModel.campingTrips
+//    val selectTripViewModel: SelectTripViewModel = viewModel()
+
     // A surface container using the 'background' color from the theme
     Surface(
         modifier = Modifier.fillMaxSize(),
@@ -32,6 +35,7 @@ fun SelectTripScreen(onTripSelected: (Int) -> Unit) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(text = "Select Trip Screen")
+            Text(text = "Trips: ${viewModel.campingTrips}")
             Button(onClick = { onTripSelected(argumentNumber) }) {
                 Text(text = "Tap To Select Default Trip")
             }
@@ -39,11 +43,11 @@ fun SelectTripScreen(onTripSelected: (Int) -> Unit) {
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    val navController = rememberNavController()
-    SelectTripScreen {
-        navController.navigate(NavScreen.TripDetailScreen.route + "/${it}")
-    }
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun DefaultPreview() {
+//    val navController = rememberNavController()
+//    SelectTripScreen {
+//        navController.navigate(NavScreen.TripDetailScreen.route + "/${it}")
+//    }
+//}

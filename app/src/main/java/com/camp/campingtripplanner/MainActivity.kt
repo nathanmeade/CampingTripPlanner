@@ -46,18 +46,19 @@ fun MainScreen() {
             )
         }
         composable(route = NavScreen.CreateTripScreen.route) {
-            CreateTripScreen {
-                navController.navigate(NavScreen.TripDetailScreen.route + "/${it}") {
-//
-                }
-            }
+            CreateTripScreen(
+                {
+                    navController.navigate(NavScreen.TripDetailScreen.route + "/${it}")
+                },
+                hiltViewModel()
+            )
         }
         composable(route = NavScreen.SelectTripScreen.route) {
-            SelectTripScreen {
+            SelectTripScreen( {
                 navController.navigate(NavScreen.TripDetailScreen.route + "/${it}") {
 //                    it.arguments()
                 }
-            }
+            }, hiltViewModel())
         }
         composable(
             route = NavScreen.TripDetailScreen.route + "/{tripId}",

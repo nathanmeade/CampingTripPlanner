@@ -56,16 +56,22 @@ object AppModule {
         return WeatherApiRepository(weatherApiApi)
     }
 
-//    @Provides
-//    @Singleton
-//    fun provideTripRepository(tripDao: CampingTripDao): CampingTripRepository {
-//        return CampingTripRepositoryImpl(tripDao)
-//    }
-//
-//    @Provides
-//    @Singleton
-//    fun provideTripDatabase(@ApplicationContext context: Context): CampingTripDatabase {
-//        return CampingTripDatabase.getInstance(context)
-//    }
+    @Provides
+    @Singleton
+    fun provideTripRepository(tripDao: CampingTripDao): CampingTripRepository {
+        return RoomCampingTripRepository(tripDao)
+    }
+
+    @Provides
+    @Singleton
+    fun provideTripDao(database: CampingTripDatabase): CampingTripDao {
+        return database.campingTripDao()
+    }
+
+    @Provides
+    @Singleton
+    fun provideTripDatabase(@ApplicationContext context: Context): CampingTripDatabase {
+        return CampingTripDatabase.getInstance(context)
+    }
 
 }

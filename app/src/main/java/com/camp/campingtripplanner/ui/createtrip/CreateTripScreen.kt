@@ -16,7 +16,7 @@ import com.camp.campingtripplanner.NavScreen
 import com.camp.campingtripplanner.ui.home.HomeScreen
 
 @Composable
-fun CreateTripScreen(onTripCreated: (Int) -> Unit) {
+fun CreateTripScreen(onTripCreated: (Int) -> Unit, viewModel: CreateTripViewModel) {
     val argumentNumber = 6
     // A surface container using the 'background' color from the theme
     Surface(
@@ -29,7 +29,7 @@ fun CreateTripScreen(onTripCreated: (Int) -> Unit) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Button(
-                onClick = { /*TODO*/ }
+                onClick = { viewModel.createTrip(onTripCreated) }
             ) {
                 Text(
                     text = "CREAasdfTE TRIP",
@@ -49,11 +49,11 @@ fun CreateTripScreen(onTripCreated: (Int) -> Unit) {
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    val navController = rememberNavController()
-    CreateTripScreen {
-        navController.navigate(NavScreen.TripDetailScreen.route + "/${it}")
-    }
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun DefaultPreview() {
+//    val navController = rememberNavController()
+//    CreateTripScreen {
+//        navController.navigate(NavScreen.TripDetailScreen.route + "/${it}")
+//    }
+//}

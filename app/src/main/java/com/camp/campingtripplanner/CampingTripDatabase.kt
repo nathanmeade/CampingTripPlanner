@@ -7,6 +7,8 @@ import androidx.room.RoomDatabase
 
 @Database(entities = [CampingTrip::class], version = 1)
 abstract class CampingTripDatabase : RoomDatabase(){
+
+    abstract fun campingTripDao() : CampingTripDao
     companion object {
         private const val DB_NAME = "trip_db"
 
