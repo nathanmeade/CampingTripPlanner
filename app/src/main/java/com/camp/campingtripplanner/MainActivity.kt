@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -67,7 +68,8 @@ fun MainScreen() {
             )
         ) {
             TripDetailScreen(
-                it.arguments?.getInt("tripId")
+                it.arguments?.getInt("tripId"),
+                hiltViewModel()
             )
         }
     }

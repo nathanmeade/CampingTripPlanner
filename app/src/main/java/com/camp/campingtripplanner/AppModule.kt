@@ -14,32 +14,48 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object AppModule {
 
+//    @Provides
+//    @Singleton
+//    fun provideOpenWeatherApi(@ApplicationContext context: Context): OpenWeatherApi {
+//        return Retrofit.Builder()
+//            .baseUrl(context.getString(R.string.open_weather_base_url))
+//            .addConverterFactory(GsonConverterFactory.create())
+//            .build()
+//            .create(OpenWeatherApi::class.java)
+//    }
+//
+//    @Provides
+//    @Singleton
+//    fun provideOpenWeatherRepository(openWeatherApi: OpenWeatherApi): WeatherRepository {
+//        return OpenWeatherRepository(openWeatherApi)
+//    }
+
     @Provides
     @Singleton
-    fun provideOpenWeatherApi(@ApplicationContext context: Context): OpenWeatherApi {
+    fun provideWeatherApiApi(@ApplicationContext context: Context): WeatherApiApi {
         return Retrofit.Builder()
-            .baseUrl(context.getString(R.string.open_weather_base_url))
+            .baseUrl(context.getString(R.string.weather_api_base_url))
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-            .create(OpenWeatherApi::class.java)
+            .create(WeatherApiApi::class.java)
     }
 
     @Provides
     @Singleton
-    fun provideOpenWeatherRepository(openWeatherApi: OpenWeatherApi): OpenWeatherRepository {
-        return OpenWeatherRepositoryImpl(openWeatherApi)
+    fun provideWeatherApiRepository(weatherApiApi: WeatherApiApi): WeatherRepository {
+        return WeatherApiRepository(weatherApiApi)
     }
 
-    @Provides
-    @Singleton
-    fun provideTripRepository(tripDao: CampingTripDao): CampingTripRepository {
-        return CampingTripRepositoryImpl(tripDao)
-    }
-
-    @Provides
-    @Singleton
-    fun provideTripDatabase(@ApplicationContext context: Context): CampingTripDatabase {
-        return CampingTripDatabase.getInstance(context)
-    }
+//    @Provides
+//    @Singleton
+//    fun provideTripRepository(tripDao: CampingTripDao): CampingTripRepository {
+//        return CampingTripRepositoryImpl(tripDao)
+//    }
+//
+//    @Provides
+//    @Singleton
+//    fun provideTripDatabase(@ApplicationContext context: Context): CampingTripDatabase {
+//        return CampingTripDatabase.getInstance(context)
+//    }
 
 }
