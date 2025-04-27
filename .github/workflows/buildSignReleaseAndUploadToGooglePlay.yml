@@ -1,5 +1,6 @@
 name: Build, Sign Release App, and Upload To Google Play
-      
+
+# Triggers when a release is created on Github
 on:   
   release:
     types: released
