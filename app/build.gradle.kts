@@ -10,7 +10,7 @@ android {
     defaultConfig {
         applicationId = "com.camp.campingtripplanner"
         minSdk = 19
-        targetSdk = 35
+        targetSdk = 36
         versionCode = 9
         versionName = "1.8"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
